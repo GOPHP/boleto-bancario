@@ -1,0 +1,28 @@
+{
+    "name": "gophp/boleto-bancario",
+    "description": "Biblioteca para boleto bancário em PHP",
+    "type": "library",
+    "require": {
+      "php": ">=7.0.0",
+      "respect/validation": "^1.1"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^6.0.11"
+    },
+    "license": "GNU",
+    "authors": [
+      {
+        "name": "Breno Douglas",
+        "email": "breno.douglas@paieterno.com.br"
+      }
+    ],
+    "autoload": {
+      "psr-4": {
+         "BoletoBancario\\": [
+             "src",
+             "tests/BoletoBancario"
+         ]
+       }
+    },
+    "minimum-stability": "dev"
+}
