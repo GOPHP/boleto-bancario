@@ -7,10 +7,6 @@ class BancoDoBrasil extends AbstractBanco
 {
     use \BoletoBancario\Calculos\CodigoBancoComDv;
 
-    private $codigobanco;
-    private $nummoeda;
-    private $codigoBancoComDv;
-
     public function __construct()
     {
         $this->codigobanco = 1;

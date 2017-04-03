@@ -16,12 +16,14 @@ $enderecoBeneficiario = (new Endereco)->comLogradouro("Av das empresas, 555")
 
 $beneficiario = (new Beneficiario)->comNomeBeneficiario("Fulano de Tal")
                                   ->comAgencia("1824")->comDigitoAgencia("4")
+                                  ->comConta('123')->comContaDv('0')
                                   ->comCodigoBeneficiario("76000")
                                   ->comDigitoCodigoBeneficiario("5")
                                   ->comNumeroConvenio("1207113")
                                   ->comCarteira("18")
                                   ->comEndereco($enderecoBeneficiario)
-                                  ->comNossoNumero("9000206");
+                                  ->comNossoNumero("000", '000', '000000019')
+                                  ->comNossoNumeroConst('1', '4');
 
 $enderecoPagador = (new Endereco)->comLogradouro("Av. dos testes, 111 apto 333")
                                  ->comBairro("Bairro Teste")

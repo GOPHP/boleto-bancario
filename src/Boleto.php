@@ -451,8 +451,19 @@ class Boleto
 	 */
 	public function getLinhaDigitavel() : string
     {
-		return (new GeradorDeLinhaDigitavel())->geraLinhaDigitavelPara($this->getCodigoDeBarras(), $this->banco);
+        $linha = $this->getLinha();
+		return (new GeradorDeLinhaDigitavel())->gera($this->getCodigoDeBarras(), $this->banco);
 	}
+
+    private function getLinha() : string
+    {
+        return "{$this->codigobanco}{$this->nummoeda}{$this->dv}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}";
+    }
+
+    private function getDv() : string
+    {
+        {$this->codigobanco}{$this->nummoeda}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}
+    }
 
 	/**
 	 * Carteira do boleto
@@ -471,6 +482,11 @@ class Boleto
     {
 		return $this->locaisDePagamento ? "" : locaisDePagamento[0];
 	}
+
+    private function getLinha() : string
+    {
+        $this->linha = "{$this->codigobanco}{$this->nummoeda}{$this->dv}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}";
+    }
 
     public function toArray() : array
     {

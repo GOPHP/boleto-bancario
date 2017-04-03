@@ -1,6 +1,11 @@
 <?php
 namespace BoletoBancario;
 
+use BoletoBancario\Calculos\FormataNumero;
+use BoletoBancario\Calculos\VerificadorBeneficiario;
+use BoletoBancario\Exception\IllegalArgumentException;
+use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
+
 class Beneficiario
 {
 
@@ -10,8 +15,12 @@ class Beneficiario
     private $codigoBeneficiario;
     private $digitoCodigoBeneficiario;
 
+    private $conta;
+    private $contaDv;
+
     private $carteira;
     private $nossoNumero;
+    private $nossoNumeroConst;
     private $digitoNossoNumero;
 
     private $nomeBeneficiario;
@@ -80,14 +89,31 @@ class Beneficiario
         return $this;
     }
 
-    public function getNossoNumero() : string
+    public function getNossoNumero() : array
     {
         return $this->nossoNumero;
     }
 
-    public function comNossoNumero(string $nossoNumero) : Beneficiario
+    public function comNossoNumero(string ...$nossoNumero) : Beneficiario
     {
+        if (count($nossoNumero) != 3)
+            throw new IllegalArgumentException("É necessário nosso numero 1, 2 e 3");
+
         $this->nossoNumero = $nossoNumero;
+        return $this;
+    }
+
+    public function getNossoNumeroConst() : array
+    {
+        return $this->nossoNumero;
+    }
+
+    public function comNossoNumero(string ...$nossoNumeroConst) : Beneficiario
+    {
+        if (count($nossoNumeroConst) != 2)
+            throw new IllegalArgumentException("É necessário dois numeros const");
+
+        $this->$nossoNumeroConst = $nossoNumeroConst;
         return $this;
     }
 
@@ -146,6 +172,63 @@ class Beneficiario
         return $this;
     }
 
+    public function getConta() : string
+    {
+        return $this->conta;
+    }
+
+    public function comConta(string $conta) : Beneficiario
+    {
+        $formata = new FormataNumero();
+        $this->conta = $formata->calc( $conta, 6, 0 );
+        return $this;
+    }
+
+    public function getContaDv() : string
+    {
+        return $this->contaDv;
+    }
+
+    public function comContaDv(string $contadv) : Beneficiario
+    {
+        $verificador = new VerificadorBeneficiario();
+        $this->contaDv = $verificador->calc($contadv);
+        return $this;
+    }
+
+    public function getNNum() : string
+    {
+        $formata = new FormataNumero;
+
+        return  $formata->calc($this->beneficiario->getNumeroConst1(), 1, 0).
+                $formata->calc($this->beneficiario->getNumeroConst2(), 1, 0).
+                $formata->calc($this->beneficiario->getNossoNumero1(), 3, 0).
+                $formata->calc($this->beneficiario->getNossoNumero2(), 3, 0).
+                $formata->calc($this->beneficiario->getNossoNumero3(), 9, 0);
+    }
+
+    public function getCampoLivre() : string
+    {
+        $formata = new FormataNumero;
+        return $this->conta.$this->contaDv.
+            $formata->calc($this->nossoNumero[0], 3, 0).
+            $formata->calc($this->nossoNumeroConst[0], 1, 0).
+            $formata->calc($this->nossoNumero[1], 3, 0).
+            $formata->calc($this->nossoNumeroConst[1], 1, 0).
+            $formata->calc($this->nossoNumero[2], 9, 0);
+    }
+
+    public function getCampoLivreDv() : string
+    {
+        $verificador = new VerificadorNossoNumero;
+        return $verificador->calc($this->getCampoLivre());
+    }
+
+    public function getCampoLivreComDv() : string
+    {
+        return $this->getCampoLivre().$this->getCampoLivreDv();
+    }
+
     public function toArray() : array
     {
         return [
@@ -155,6 +238,7 @@ class Beneficiario
             'digitoCodigoBeneficiario' => $this->digitoCodigoBeneficiario,
             'carteira' => $this->carteira,
             'nossoNumero' => $this->nossoNumero,
+            'nossoNumeroConst' => $htis->nossoNumeroConst,
             'digitoNossoNumero' => $this->digitoNossoNumero,
             'nomeBeneficiario' => $this->nomeBeneficiario,
             'documento'  => $this->documento,
