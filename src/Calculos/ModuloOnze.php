@@ -4,7 +4,7 @@ namespace BoletoBancario\Calculos;
 class ModuloOnze
 {
 
-    public function calc($num, $base = 9, $r = 0) : integer
+    public function calc($num, $base = 9, $r = 0) : int
     {
         $fator = 2;
 

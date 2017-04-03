@@ -50,4 +50,13 @@ class Pagador
         $this->endereco = $endereco;
         return $this;
     }
+
+    public function toArray() : array
+    {
+        return [
+            'nome' => $this->nome,
+            'documento' => $this->documento,
+            'endereco' => $this->endereco->toArray()
+        ];
+    }
 }

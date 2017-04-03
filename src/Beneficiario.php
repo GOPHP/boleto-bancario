@@ -47,6 +47,17 @@ class Beneficiario
         return $this;
     }
 
+    public function getCodigoBeneficiario() : string
+    {
+        return $this->digitoAgencia;
+    }
+
+    public function comCodigoBeneficiario(string $codigoBenficiario) : Beneficiario
+    {
+        $this->codigoBenficiario = $codigoBenficiario;
+        return $this;
+    }
+
     public function getDigitoCodigoBeneficiario() : string
     {
         return $this->digitoCodigoBeneficiario;
@@ -133,5 +144,22 @@ class Beneficiario
     {
         $this->numeroConvenio = $numeroConvenio;
         return $this;
+    }
+
+    public function toArray() : array
+    {
+        return [
+            'agencia' => $this->agencia,
+            'digitoAgencia' => $this->digitoAgencia,
+            'codigoBeneficiario' => $this->codigoBeneficiario,
+            'digitoCodigoBeneficiario' => $this->digitoCodigoBeneficiario,
+            'carteira' => $this->carteira,
+            'nossoNumero' => $this->nossoNumero,
+            'digitoNossoNumero' => $this->digitoNossoNumero,
+            'nomeBeneficiario' => $this->nomeBeneficiario,
+            'documento'  => $this->documento,
+            'numeroConvenio' => $this->numeroConvenio,
+            'endereco' => $this->endereco->toArray()
+        ];
     }
 }

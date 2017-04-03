@@ -3,7 +3,7 @@ namespace BoletoBancario\Calculos;
 
 class ModuloDez
 {
-    public function calc($num) : integer
+    public function calc($num) : int
     {
         $numtotal10 = 0;
         $fator      = 2;

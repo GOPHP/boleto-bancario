@@ -93,4 +93,15 @@ class Endereco
     {
         return $this->getEnderecoCompleto();
     }
+
+    public function toArray()
+    {
+        return [
+            'logradouro' => $this->logradouro,
+            'bairro' => $this->bairro,
+            'cidade' => $this->cidade,
+            'cep'    => $this->cep,
+            'uf'     => $this->uf
+        ];
+    }
 }

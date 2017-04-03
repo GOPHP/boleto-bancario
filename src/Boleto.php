@@ -2,6 +2,7 @@
 namespace BoletoBancario;
 
 use BoletoBancario\Exception\{IllegalArgumentException, UnsupportedOperationException};
+use BoletoBancario\Calculos\FormataNumero;
 
 class Boleto
 {
@@ -41,7 +42,7 @@ class Boleto
     /**
 	 * @return aceite do boleto que por default sempre é false
 	 */
-	public function getAceite() : boolean
+	public function getAceite() : bool
     {
 		return $this->aceite;
 	}
@@ -50,7 +51,7 @@ class Boleto
 	 * @param aceite que será associado ao boleto
 	 * @return este boleto
 	 */
-	public function comAceite(boolean $aceite) : Boleto
+	public function comAceite(bool $aceite) : Boleto
     {
 		$this->aceite = $aceite;
 		return $this;
@@ -146,7 +147,7 @@ class Boleto
 
 	public function comValorBoleto(float $valor) : Boleto
     {
-        $this->valor = $valor;
+        $this->valor = (new FormataNumero)->calc($valor, 10, 0, FormataNumero::FORMATO_VALOR);
         return $this;
 	}
 
@@ -171,7 +172,7 @@ class Boleto
 	/**
 	 * @return código da espécie da moeda que por default é "9" (real)
 	 */
-	public function getCodigoEspecieMoeda() : integer
+	public function getCodigoEspecieMoeda() : int
     {
 		return $this->codigoEspecieMoeda;
 	}
@@ -180,7 +181,7 @@ class Boleto
 	 * @param codigoEspecieMoeda que será associado ao boleto
 	 * @return este boleto
 	 */
-	public function comCodigoEspecieMoeda(integer $codigoEspecieMoeda) : Boleto
+	public function comCodigoEspecieMoeda(int $codigoEspecieMoeda) : Boleto
     {
 		$this->codigoEspecieMoeda = $codigoEspecieMoeda;
 		return $this;
@@ -292,7 +293,7 @@ class Boleto
 	 * @throws IllegalArgumentException caso tenha mais de 5 descrições
 	 * @return este boleto
 	 */
-	public function comDescricoes(array $descricoes) : Boleto {
+	public function comDescricoes(string ...$descricoes) : Boleto {
 		if (count($descricoes) > 5)
 			throw new IllegalArgumentException("maximo de 5 descricoes permitidas");
 
@@ -470,4 +471,23 @@ class Boleto
     {
 		return $this->locaisDePagamento ? "" : locaisDePagamento[0];
 	}
+
+    public function toArray() : array
+    {
+        return [
+            'aceite' => $this->aceite,
+            'valor_boleto' => $this->valorBoleto,
+            'especie' => "R$",
+            'especie_doc' => $this->especiDocumento,
+            'quantidade' => 0,
+            'numero_documento' => $this->numeroDocumento,
+            'identificacao' => 'BoletoBancario GOPHP',
+            'instrucoes' => $this->instrucoes,
+            'descricoes' => $this->descricoes,
+            'beneficiario' => $this->beneficiario->toArray(),
+            'pagador'      => $this->pagador->toArray(),
+            'datas'        => $this->datas->toArray(),
+            'banco'        => $this->banco->toArray()
+        ];
+    }
 }
