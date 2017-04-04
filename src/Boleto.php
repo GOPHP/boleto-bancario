@@ -459,7 +459,7 @@ class Boleto
 	 */
 	public function getCodigoDeBarras() : string
     {
-		return $this->banco->geraCodigoDeBarrasPara($this->banco->getCampoLivre($this));
+		return $this->banco->geraCodigoDeBarrasPara($this, true);
 	}
 
 	/**
@@ -489,7 +489,7 @@ class Boleto
             'especie' => "R$",
             'especie_doc' => $this->especiDocumento,
             'quantidade' => 0,
-            'nossoNumero' => $this->banco->getNNum($this->getBeneficiario()),
+            'nossoNumero' => $this->banco->getNossoNumeroFormatado($this->getBeneficiario()),
             'numero_documento' => $this->numeroDocumento,
             'linha_digitavel' => $this->banco->getLinhaDigitavel($this),
             'codigo_barras' => $this->getCodigoDeBarras(),

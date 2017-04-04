@@ -5,6 +5,7 @@ use BoletoBancario\Banco;
 use BoletoBancario\Boleto;
 use BoletoBancario\Bancos\Gerador\GeradorCodigoDeBarra;
 
+
 abstract class AbstractBanco implements Banco
 {
 
@@ -27,10 +28,6 @@ abstract class AbstractBanco implements Banco
         return $this->codigoBancoComDv;
     }
 
-    public function geraCodigoDeBarrasPara($linha) : string
-    {
-        return (new GeradorCodigoDeBarra())->gerarPara($linha);
-    }
 
     public function toArray() : array
     {
@@ -39,5 +36,10 @@ abstract class AbstractBanco implements Banco
             'codigo_banco_com_dv' => $this->getCodigoBancoComDv(),
             'nummoeda' => $this->getNumMoeda()
         ];
+    }
+
+    protected function geraImagemCodigoDeBarras($linha) : string
+    {
+        return (new GeradorCodigoDeBarra())->gerarPara($linha);
     }
 }

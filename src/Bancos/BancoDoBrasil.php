@@ -1,11 +1,9 @@
 <?php
 namespace BoletoBancario\Bancos;
 
-use BoletoBancario\Banco;
-use BoletoBancario\Boleto;
-use BoletoBancario\Beneficiario;
-use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel, GeradorCodigoDeBarra};
-use BoletoBancario\Calculos\{ FormataNumero, VerificadorBarra, VerificadorNossoNumero, ModuloOnze };
+use BoletoBancario\{Boleto, Beneficiario};
+use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
+use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
 use BoletoBancario\Exception\CriacaoBoletoException;
 
 class BancoDoBrasil extends AbstractBanco
@@ -19,7 +17,7 @@ class BancoDoBrasil extends AbstractBanco
     {
         $this->codigobanco = "001";
         $this->nummoeda = 9;
-        $this->codigoBancoComDv = $this->geraCodigoBanco($this->codigobanco);
+        $this->codigoBancoComDv = "001-9";
     }
 
     /**
@@ -47,20 +45,14 @@ class BancoDoBrasil extends AbstractBanco
 	 */
 	public function getLinhaDigitavel(Boleto $boleto) : string
     {
-        $linha = $this->getCampoLivre($boleto);
+        $linha = $this->geraCodigoDeBarrasPara($boleto);
         return (new GeradorLinhaDigitavel())->geraLinhaDigitavelPara($linha);
 	}
-
-    public function getNNum(Beneficiario $beneficiario) : string
-    {
-        $formata = new FormataNumero;
-        return $nossoNumero = $this->getNossoNumeroFormatado($beneficiario);
-    }
 
     /** Metodo mais importante, responsavel por gerar campo livre para
      * codigo de barras
      */
-    public function getCampoLivre(Boleto $boleto) : string
+    public function geraCodigoDeBarrasPara(Boleto $boleto, bool $generateImage = false) : string
     {
         $beneficiario = $boleto->getBeneficiario();
         $carteira= $beneficiario->getCarteira();
@@ -88,7 +80,12 @@ class BancoDoBrasil extends AbstractBanco
 					"Verifique carteira e demais dados.");
         }
 
-        return (new CodigoDeBarraBuilder($boleto))->comCampoLivre($campoLivre);
+        $codigoDeBarras =  (new CodigoDeBarraBuilder($boleto))->comCampoLivre($campoLivre);
+
+        if($generateImage)
+            return $this->geraImagemCodigoDeBarras($codigoDeBarras);
+
+        return $codigoDeBarras;
     }
 
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string

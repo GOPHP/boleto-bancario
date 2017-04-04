@@ -22,14 +22,9 @@ interface Banco
 	public function getLinhaDigitavel(Boleto $boleto) : string;
 
     /**
-     * Gera nosso numero
-     */
-    public function getNNum(Beneficiario $beneficiario) : string;
-
-    /**
      * Gera campo livre
      */
-    public function getCampoLivre(Boleto $boleto) : string;
+    public function geraCodigoDeBarrasPara(Boleto $boleto, bool $generateImage = false) : string;
 
     /**
      *  Gera codigo verificador de campo livre
