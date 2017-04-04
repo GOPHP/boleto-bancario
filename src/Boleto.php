@@ -2,10 +2,11 @@
 namespace BoletoBancario;
 
 use BoletoBancario\Exception\{IllegalArgumentException, UnsupportedOperationException};
-use BoletoBancario\Calculos\FormataNumero;
+use BoletoBancario\Calculos\{ FormataNumero, VerificadorBarra };
 
 class Boleto
 {
+    protected $valor = 0.0;
     protected $valorBoleto;
     protected $quantidadeMoeda;
     protected $valorMoeda;
@@ -133,10 +134,19 @@ class Boleto
 	/**
 	 * @return valor desse boleto
 	 */
-	public function getValorBoleto() : float
+	public function getValorBoleto() : string
     {
 		return $this->valorBoleto;
 	}
+
+    /**
+	 * @return valor desse boleto
+	 */
+	public function getValor() : float
+    {
+		return $this->valor;
+	}
+
 
 	/**
 	 * @param valor em double que após ser convertido pra String
@@ -147,9 +157,15 @@ class Boleto
 
 	public function comValorBoleto(float $valor) : Boleto
     {
-        $this->valor = (new FormataNumero)->calc($valor, 10, 0, FormataNumero::FORMATO_VALOR);
+        $this->valor = number_format($valor, 2, ',', '.');
+        $this->valorBoleto = (new FormataNumero)->calc(number_format($valor, 2, ',', ''), 10, 0, FormataNumero::FORMATO_VALOR);
         return $this;
 	}
+
+    public function getValorBoletoFormatado()
+    {
+        return (new FormataNumero)->calc($this->valorBoleto, 10, 0, FormataNumero::FORMATO_VALOR);
+    }
 
 	/**
 	 * @return espécie da moeda que por default é "R$"
@@ -260,7 +276,8 @@ class Boleto
     /**
 	 * @return lista de instruções do boleto
 	 */
-	public function getInstrucoes() : array {
+	public function getInstrucoes() : array
+    {
 		return $this->instrucoes;
 	}
 
@@ -293,7 +310,8 @@ class Boleto
 	 * @throws IllegalArgumentException caso tenha mais de 5 descrições
 	 * @return este boleto
 	 */
-	public function comDescricoes(string ...$descricoes) : Boleto {
+	public function comDescricoes(string ...$descricoes) : Boleto
+    {
 		if (count($descricoes) > 5)
 			throw new IllegalArgumentException("maximo de 5 descricoes permitidas");
 
@@ -442,28 +460,8 @@ class Boleto
 	 */
 	public function getCodigoDeBarras() : string
     {
-		return $this->banco->geraCodigoDeBarrasPara($this);
+		return $this->banco->geraCodigoDeBarrasPara($this->banco->getLinha($this));
 	}
-
-	/**
-	 * Linha digitável formatada
-	 * @return linha digitável
-	 */
-	public function getLinhaDigitavel() : string
-    {
-        $linha = $this->getLinha();
-		return (new GeradorDeLinhaDigitavel())->gera($this->getCodigoDeBarras(), $this->banco);
-	}
-
-    private function getLinha() : string
-    {
-        return "{$this->codigobanco}{$this->nummoeda}{$this->dv}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}";
-    }
-
-    private function getDv() : string
-    {
-        {$this->codigobanco}{$this->nummoeda}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}
-    }
 
 	/**
 	 * Carteira do boleto
@@ -483,20 +481,19 @@ class Boleto
 		return $this->locaisDePagamento ? "" : locaisDePagamento[0];
 	}
 
-    private function getLinha() : string
-    {
-        $this->linha = "{$this->codigobanco}{$this->nummoeda}{$this->dv}{$this->fator_vencimento}{$this->valor}{$this->campo_livre_com_dv}";
-    }
-
     public function toArray() : array
     {
         return [
             'aceite' => $this->aceite,
-            'valor_boleto' => $this->valorBoleto,
+            'valor_boleto' => $this->valor,
+            'valor_unitario' => 0,
             'especie' => "R$",
             'especie_doc' => $this->especiDocumento,
             'quantidade' => 0,
+            'nossoNumero' => $this->banco->getNNum($this->getBeneficiario()),
             'numero_documento' => $this->numeroDocumento,
+            'linha_digitavel' => $this->banco->getLinhaDigitavel($this),
+            'codigo_barras' => $this->getCodigoDeBarras(),
             'identificacao' => 'BoletoBancario GOPHP',
             'instrucoes' => $this->instrucoes,
             'descricoes' => $this->descricoes,

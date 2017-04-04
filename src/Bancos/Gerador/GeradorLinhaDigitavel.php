@@ -8,7 +8,6 @@ class GeradorLinhaDigitavel
     public function gera($codigo) : string
     {
        $moduloDez = new ModuloDez;
-
        // Posição 	Conteúdo
        // 1 a 3    Número do banco
        // 4        Código da Moeda - 9 para Real

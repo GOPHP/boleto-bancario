@@ -507,7 +507,7 @@
                     <tr>
                         <td width=150><img src="<?= $this->getImage('logobb.jpg');?>"></td>
                         <td width=50>
-                            <div class="field_cod_banco">00<?= $codigo_banco_com_dv ?></div>
+                            <div class="field_cod_banco">00<?= $banco['codigo_banco_com_dv']; ?></div>
                         </td>
                         <td class="linha_digitavel"><?= $linha_digitavel ?></td>
                     </tr>
@@ -525,11 +525,11 @@
                     </tr>
 
                     <tr class="campos">
-                        <td class="cedente"><?= $cedente; ?>&nbsp;</td>
-                        <td class="ag_cod_cedente"><?= $agencia_codigo ?> &nbsp;</td>
+                        <td class="cedente"><?= $beneficiario['nomeBeneficiario']; ?>&nbsp;</td>
+                        <td class="ag_cod_cedente"><?= $beneficiario['agenciaCodigo'] ?> &nbsp;</td>
                         <td class="especie"><?= $especie ?>&nbsp;</td>
                         <TD class="qtd"><?= $quantidade ?>&nbsp;</td>
-                        <TD class="nosso_numero"><?= $nosso_numero ?>&nbsp;</td>
+                        <TD class="nosso_numero"><?= $nossoNumero ?>&nbsp;</td>
                     </tr>
                 </tbody>
             </table>
@@ -545,9 +545,9 @@
                     </tr>
                     <tr class="campos">
                         <td class="num_doc"><?= $numero_documento ?></td>
-                        <td class="contrato"><?= $contrato ?></td>
-                        <td class="cpf_cei_cnpj"><?= $cpf_cnpj ?></td>
-                        <td class="vencimento"><?= $data_vencimento ?></td>
+                        <td class="contrato"><?= $contrato ?? 'N/A' ?></td>
+                        <td class="cpf_cei_cnpj"><?= $beneficiario['documento'] ?></td>
+                        <td class="vencimento"><?= $datas['vencimento']?></td>
                         <td class="valor_doc"><?= $valor_boleto ?></td>
                     </tr>
                 </tbody>
@@ -579,7 +579,7 @@
                         <td class="sacado">Sacado</td>
                     </tr>
                     <tr class="campos">
-                        <td class="sacado"><?= $sacado ?></td>
+                        <td class="sacado"><?= $pagador['nome'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -600,7 +600,7 @@
                     <tr>
                         <td width=150><img src="<?= $this->getImage('logobb.jpg');?>"></td>
                         <td width=50>
-                            <div class="field_cod_banco">00<?= $codigo_banco_com_dv ?></div>
+                            <div class="field_cod_banco">00<?= $banco['codigo_banco_com_dv'] ?></div>
                         </td>
                         <td class="linha_digitavel"><?= $linha_digitavel ?></td>
                     </tr>
@@ -615,7 +615,7 @@
                     </tr>
                     <tr class="campos">
                         <td class="local_pagto">QUALQUER BANCO AT&Eacute; O VENCIMENTO</td>
-                        <td class="vencimento2"><?= $data_vencimento ?></td>
+                        <td class="vencimento2"><?= $datas['vencimento'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -627,8 +627,8 @@
                         <td class="ag_cod_cedente2">Ag&ecirc;ncia/C&oacute;digo cedente</td>
                     </tr>
                     <tr class="campos">
-                        <td class="cedente2"><?= $cedente ?></td>
-                        <td class="ag_cod_cedente2"><?= $agencia_codigo ?></td>
+                        <td class="cedente2"><?= $beneficiario['nomeBeneficiario'] ?></td>
+                        <td class="ag_cod_cedente2"><?= $beneficiario['agenciaCodigo'] ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -644,12 +644,12 @@
                         <td class="nosso_numero2">Nosso n&uacute;mero</td>
                     </tr>
                     <tr class="campos">
-                        <td class="data_doc"><?= $data_documento ?></td>
+                        <td class="data_doc"><?= $datas['documento'] ?></td>
                         <td class="num_doc2"><?= $numero_documento ?></td>
                         <td class="especie_doc"><?= $especie_doc ?></td>
                         <td class="aceite"><?= $aceite ?></td>
-                        <td class="data_process"><?= $data_processamento ?></td>
-                        <td class="nosso_numero2"><?= $nosso_numero ?></td>
+                        <td class="data_process"><?= $datas['processado'] ?></td>
+                        <td class="nosso_numero2"><?= $nossoNumero ?></td>
                     </tr>
                 </tbody>
             </table>
@@ -666,8 +666,8 @@
                     </tr>
                     <tr class="campos">
                         <td class="reservado">&nbsp;</td>
-                        <td class="carteira"><?= $carteira ?> <?php
-                            echo isset($variacao_carteira) ? $variacao_carteira : '&nbsp;'
+                        <td class="carteira"><?= $beneficiario['carteira'] ?> <?php
+                            echo $variacao_carteira ?? '&nbsp;'
                             ?></td>
                         <td class="especie2"><?= $especie ?></td>
                         <td class="qtd2"><?= $quantidade ?></td>
@@ -690,13 +690,13 @@
                                     </tr>
                                     <tr class="campos">
                                         <td class="instrucoes" rowspan="5">
-                                            <p><?= $demonstrativo1; ?></p>
-                                            <p><?= $demonstrativo2; ?></p>
-                                            <p><?= $demonstrativo3; ?></p>
-                                            <p><?= $instrucoes1; ?></p>
-                                            <p><?= $instrucoes2; ?></p>
-                                            <p><?= $instrucoes3; ?></p>
-                                            <p><?= $instrucoes4; ?></p>
+                                            <?php foreach ($descricoes as $demonstrativo): ?>
+                                                <p><?= $demonstrativo; ?></p>
+                                            <?php endforeach; ?>
+
+                                            <?php foreach ($instrucoes as $instrucao ): ?>
+                                                <p><?= $instrucao; ?></p>
+                                            <?php endforeach; ?>
                                         </td>
                                     </tr>
                                 </tbody>
@@ -778,9 +778,13 @@
                     </tr>
                     <tr class="campos">
                         <td class="sacado2">
-                            <p><?= $sacado ?></p>
-                            <p><?= $endereco1 ?></p>
-                            <p><?= $endereco2 ?></p>
+                            <p><?= $pagador['nome'] ?></p>
+                            <p><?= $pagador['endereco']['logradouro'] ?></p>
+                            <p>
+                                <?= $pagador['endereco']['cidade'] ?> -
+                                <?= $pagador['endereco']['uf'] ?> -
+                                CEP: <?= $pagador['endereco']['cep'] ?>
+                            </p>
                         </td>
                     </tr>
                 </tbody>

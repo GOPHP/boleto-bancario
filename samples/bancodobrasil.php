@@ -5,8 +5,8 @@ use BoletoBancario\{ Datas, Endereco, Pagador, Beneficiario, Boleto };
 use BoletoBancario\Bancos\BancoDoBrasil;
 
 $datas = (new Datas())->comDocumento(1, 5, 2008)
-                      ->comProcessamento(1, 5, 2008)
-                      ->comVencimento(2, 5, 2008);
+                      ->comProcessamentoDateTime(new \DateTime())
+                      ->comVencimentoDateTime(\DateTime::createFromFormat('d/m/Y', date("d/m/Y", time() + (5 * 86400))));
 
 $enderecoBeneficiario = (new Endereco)->comLogradouro("Av das empresas, 555")
                                       ->comBairro('Bairro Grande')
@@ -15,12 +15,12 @@ $enderecoBeneficiario = (new Endereco)->comLogradouro("Av das empresas, 555")
                                       ->comUf("SP");
 
 $beneficiario = (new Beneficiario)->comNomeBeneficiario("Fulano de Tal")
-                                  ->comAgencia("1824")->comDigitoAgencia("4")
-                                  ->comConta('123')->comContaDv('0')
+                                  ->comAgencia("1234")->comDigitoAgencia("4")
+                                  ->comConta('123456')->comContaDv('0')
                                   ->comCodigoBeneficiario("76000")
                                   ->comDigitoCodigoBeneficiario("5")
                                   ->comNumeroConvenio("1207113")
-                                  ->comCarteira("18")
+                                  ->comCarteira("RG")
                                   ->comEndereco($enderecoBeneficiario)
                                   ->comNossoNumero("000", '000', '000000019')
                                   ->comNossoNumeroConst('1', '4');
@@ -40,9 +40,14 @@ $boleto = (Boleto::novoBoleto())->comBanco($banco)
                         ->comDatas($datas)
                         ->comBeneficiario($beneficiario)
                         ->comPagador($pagador)
-                        ->comValorBoleto(200.00)
-                        ->comNumeroDoDocumento("1234")
+                        ->comValorBoleto(2952.95)
+                        ->comNumeroDoDocumento("27.030195.10")
                         ->comInstrucoes("Instrucao 1", "Instrucao 2", "Instrucao 3", "Instrucao 4")
+                        ->comDescricoes(
+                            "Pagamento de Compra na Loja Nonononono",
+                            'Mensalidade referente a nonon nonooon nononon<br>Taxa bancária - R$2,95',
+                            'BoletoPhp - http://www.boletophp.com.br'
+                        )
                         ->comLocaisDePagamento("Local 1", "Local 2");
 
 $gerador = new \BoletoBancario\Transformer\TransformerBoletoHtml();
