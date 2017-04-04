@@ -33,23 +33,12 @@ class BancoDoBrasil extends AbstractBanco
     }
 
     /**
-	 * Pega a URL com a imagem de um banco
-	 *
-	 * @return logo do banco
-	 */
-    public function getImage() : string
-    {
-        return 'banco-do-brasil.png';
-    }
-
-    /**
      *  Pega nome de template de boleto de banco
      */
     public function getTemplateName() : string
     {
         return 'bancodobrasil';
     }
-
 
     //BOLETO
 	/**
@@ -70,7 +59,7 @@ class BancoDoBrasil extends AbstractBanco
 
     /** Metodo mais importante, responsavel por gerar campo livre para
      * codigo de barras
-     */ 
+     */
     public function getCampoLivre(Boleto $boleto) : string
     {
         $beneficiario = $boleto->getBeneficiario();

@@ -11,13 +11,6 @@ interface Banco
     public function getNumeroBancoFormatado() : string;
 
     /**
-	 * Pega a URL com a imagem de um banco
-	 *
-	 * @return logo do banco
-	 */
-    public function getImage() : string;
-
-    /**
      *  Pega nome de template de boleto de banco
      */
     public function getTemplateName() : string;
