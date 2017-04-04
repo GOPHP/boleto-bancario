@@ -157,7 +157,7 @@ class Boleto
 
 	public function comValorBoleto(float $valor) : Boleto
     {
-        $this->valor = number_format($valor, 2, ',', '.');
+        $this->valor = number_format($valor, 2, ',', '');
         $this->valorBoleto = (new FormataNumero)->calc(number_format($valor, 2, ',', ''), 10, 0, FormataNumero::FORMATO_VALOR);
         return $this;
 	}
@@ -376,8 +376,7 @@ class Boleto
 	 */
 	public function getValorFormatado() : string
     {
-		$valor = sprintf("%011.2f", $this->getValorBoleto());
-        return preg_replace("[^0-9]", "", $valor);
+        return $this->getValorBoleto();
 	}
 
 	/**
@@ -460,7 +459,7 @@ class Boleto
 	 */
 	public function getCodigoDeBarras() : string
     {
-		return $this->banco->geraCodigoDeBarrasPara($this->banco->getLinha($this));
+		return $this->banco->geraCodigoDeBarrasPara($this->banco->getCampoLivre($this));
 	}
 
 	/**

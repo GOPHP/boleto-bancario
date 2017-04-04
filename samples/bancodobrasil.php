@@ -20,10 +20,9 @@ $beneficiario = (new Beneficiario)->comNomeBeneficiario("Fulano de Tal")
                                   ->comCodigoBeneficiario("76000")
                                   ->comDigitoCodigoBeneficiario("5")
                                   ->comNumeroConvenio("1207113")
-                                  ->comCarteira("RG")
+                                  ->comCarteira("18")
                                   ->comEndereco($enderecoBeneficiario)
-                                  ->comNossoNumero("000", '000', '000000019')
-                                  ->comNossoNumeroConst('1', '4');
+                                  ->comNossoNumero("900020");
 
 $enderecoPagador = (new Endereco)->comLogradouro("Av. dos testes, 111 apto 333")
                                  ->comBairro("Bairro Teste")

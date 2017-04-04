@@ -29,17 +29,6 @@ interface Banco
 	public function getLinhaDigitavel(Boleto $boleto) : string;
 
     /**
-     * Linha para gerar linha digitavel e codigo de barras
-     * @return string linha
-     */
-    public function getLinha(Boleto $boleto) : string;
-
-    /**
-     * Gera verificador para codigo de barras
-     */
-    public function getDv(Boleto $boleto) : string;
-
-    /**
      * Gera nosso numero
      */
     public function getNNum(Beneficiario $beneficiario) : string;
@@ -47,7 +36,7 @@ interface Banco
     /**
      * Gera campo livre
      */
-    public function getCampoLivre(Beneficiario $beneficiario) : string;
+    public function getCampoLivre(Boleto $boleto) : string;
 
     /**
      *  Gera codigo verificador de campo livre

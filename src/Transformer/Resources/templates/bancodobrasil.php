@@ -507,7 +507,7 @@
                     <tr>
                         <td width=150><img src="<?= $this->getImage('logobb.jpg');?>"></td>
                         <td width=50>
-                            <div class="field_cod_banco">00<?= $banco['codigo_banco_com_dv']; ?></div>
+                            <div class="field_cod_banco"><?= $banco['codigo_banco_com_dv']; ?></div>
                         </td>
                         <td class="linha_digitavel"><?= $linha_digitavel ?></td>
                     </tr>
@@ -600,7 +600,7 @@
                     <tr>
                         <td width=150><img src="<?= $this->getImage('logobb.jpg');?>"></td>
                         <td width=50>
-                            <div class="field_cod_banco">00<?= $banco['codigo_banco_com_dv'] ?></div>
+                            <div class="field_cod_banco"><?= $banco['codigo_banco_com_dv'] ?></div>
                         </td>
                         <td class="linha_digitavel"><?= $linha_digitavel ?></td>
                     </tr>

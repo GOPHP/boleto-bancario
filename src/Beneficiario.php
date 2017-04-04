@@ -94,7 +94,7 @@ class Beneficiario
 
     public function comNossoNumero(string ...$nossoNumero) : Beneficiario
     {
-        if (count($nossoNumero) != 3)
+        if (count($nossoNumero) != 3 && count($nossoNumero) != 1 )
             throw new IllegalArgumentException("É necessário nosso numero 1, 2 e 3");
 
         $this->nossoNumero = $nossoNumero;
@@ -103,7 +103,7 @@ class Beneficiario
 
     public function getNossoNumeroConst() : array
     {
-        return $this->nossoNumeroConst;
+        return $this->nossoNumeroConst ?? [];
     }
 
     public function comNossoNumeroConst(string ...$nossoNumeroConst) : Beneficiario

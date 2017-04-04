@@ -29,7 +29,7 @@ abstract class AbstractBanco implements Banco
 
     public function geraCodigoDeBarrasPara($linha) : string
     {
-        return (new GeradorCodigoDeBarra())->comLinha($linha);
+        return (new GeradorCodigoDeBarra())->gerarPara($linha);
     }
 
     public function toArray() : array
