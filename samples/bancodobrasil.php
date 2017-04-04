@@ -42,11 +42,16 @@ $boleto = (Boleto::novoBoleto())->comBanco($banco)
                         ->comPagador($pagador)
                         ->comValorBoleto(2952.95)
                         ->comNumeroDoDocumento("27.030195.10")
-                        ->comInstrucoes("Instrucao 1", "Instrucao 2", "Instrucao 3", "Instrucao 4")
+                        ->comInstrucoes(
+                            "- Sr. Caixa, cobrar multa de 2% após o vencimento",
+                            "- Receber até 10 dias após o vencimento",
+                            "- Em caso de dúvidas entre em contato conosco: xxxx@xxxx.com.br",
+                            "&nbsp; Emitido pelo sistema Projeto BoletoPhp - www.boletophp.com.br"
+                        )
                         ->comDescricoes(
                             "Pagamento de Compra na Loja Nonononono",
                             'Mensalidade referente a nonon nonooon nononon<br>Taxa bancária - R$2,95',
-                            'BoletoPhp - http://www.boletophp.com.br'
+                            'GOPHP - http://www.gophp.com.br'
                         )
                         ->comLocaisDePagamento("Local 1", "Local 2");
 
