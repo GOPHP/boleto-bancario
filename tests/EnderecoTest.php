@@ -1,7 +1,9 @@
 <?php
 namespace BoletoBancario;
 
-class EnderecoTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class EnderecoTest extends TestCase
 {
-    
+
 }

@@ -1,7 +1,9 @@
 <?php
 namespace BoletoBancario\Calculos;
 
-class VerificadorNossoNumeroTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class VerificadorNossoNumeroTest extends TestCase
 {
 
 }

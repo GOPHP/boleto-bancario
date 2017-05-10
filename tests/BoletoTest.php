@@ -1,7 +1,9 @@
 <?php
 namespace BoletoBancario;
 
-class BoletoTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class BoletoTest extends TestCase
 {
 
 }

@@ -10,9 +10,8 @@ class GeradorLinhaDigitavel
      * da carta circular n. 2926 do banco central do Brasil.
      * Disponível para consulta em caelum.stella.boleto.doc
      *
-     * @param codigoDeBarras gerado pelo boleto
-     * @param banco banco para o qual estamos gerando o boleto.
-     * @return linha digitavel já formatada de acordo com padrao
+     * @param string gerado pelo boleto
+     * @return string digitavel já formatada de acordo com padrao
      */
     public function geraLinhaDigitavelPara(string $codigoDeBarras)
     {

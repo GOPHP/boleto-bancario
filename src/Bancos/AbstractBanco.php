@@ -2,7 +2,6 @@
 namespace BoletoBancario\Bancos;
 
 use BoletoBancario\Banco;
-use BoletoBancario\Boleto;
 use BoletoBancario\Bancos\Gerador\GeradorCodigoDeBarra;
 
 

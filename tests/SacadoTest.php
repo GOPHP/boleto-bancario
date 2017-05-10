@@ -1,7 +1,9 @@
 <?php
 namespace BoletoBancario;
 
-class SacadoTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class SacadoTest extends TestCase
 {
 
 }

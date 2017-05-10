@@ -1,7 +1,9 @@
 <?php
 namespace BoletoBancario\Calculos;
 
-class ModuloOnzeTest extends PHPUnit_Framework_TestCase
+use PHPUnit\Framework\TestCase;
+
+class ModuloOnzeTest extends TestCase
 {
 
 }
