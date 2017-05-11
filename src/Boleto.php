@@ -2,7 +2,7 @@
 namespace BoletoBancario;
 
 use BoletoBancario\Exception\{IllegalArgumentException, UnsupportedOperationException};
-use BoletoBancario\Calculos\{ FormataNumero, VerificadorBarra };
+use BoletoBancario\Calculos\{ FormataNumero };
 
 class Boleto
 {
@@ -30,7 +30,7 @@ class Boleto
 
 
     /**
-	 * @return novo Boleto com valores default de especieMoeda R$,
+	 * @return Boleto novo Boleto com valores default de especieMoeda R$,
 	 * código de espécie moeda 9 (real), aceite false e espécie DV
 	 */
 	public static function novoBoleto() : Boleto
@@ -41,7 +41,7 @@ class Boleto
 	}
 
     /**
-	 * @return aceite do boleto que por default sempre é false
+	 * @return bool aceite do boleto que por default sempre é false
 	 */
 	public function getAceite() : bool
     {
@@ -49,8 +49,8 @@ class Boleto
 	}
 
 	/**
-	 * @param aceite que será associado ao boleto
-	 * @return este boleto
+	 * @param bool $aceite que será associado ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comAceite(bool $aceite) : Boleto
     {
@@ -59,7 +59,7 @@ class Boleto
 	}
 
 	/**
-	 * @return datas do boleto
+	 * @return Datas datas do boleto
 	 * @see Datas
 	 */
 	public function getDatas() : Datas
@@ -68,8 +68,8 @@ class Boleto
 	}
 
 	/**
-	 * @param datas que serão associadas ao boleto
-	 * @return este boleto
+	 * @param Datas $datas que serão associadas ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comDatas(Datas $datas) : Boleto
     {
@@ -78,7 +78,7 @@ class Boleto
 	}
 
 	/**
-	 * @return espécie do documento do boleto que por default sempre é "DV"
+	 * @return string espécie do documento do boleto que por default sempre é "DV"
 	 */
 	public function getEspecieDocumento() : string
     {
@@ -86,8 +86,8 @@ class Boleto
 	}
 
 	/**
-	 * @param especieDocumento que será associado ao boleto.
-	 * @return este boleto
+	 * @param string $especieDocumento que será associado ao boleto.
+	 * @return Boleto este boleto
 	 */
 	public function comEspecieDocumento(string $especieDocumento) : Boleto
     {
@@ -96,7 +96,7 @@ class Boleto
 	}
 
 	/**
-	 * @return número do documento. Código informado pelo banco
+	 * @return string número do documento. Código informado pelo banco
 	 */
 	public function getNumeroDoDocumento() : string
     {
@@ -104,8 +104,8 @@ class Boleto
 	}
 
 	/**
-	 * @param numeroDocumento que será associado ao boleto
-	 * @return este boleto
+	 * @param string $numeroDocumento que será associado ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comNumeroDoDocumento(string $numeroDocumento) : Boleto
     {
@@ -114,7 +114,7 @@ class Boleto
 	}
 
 	/**
-	 * @return quantidade da moeda
+	 * @return float quantidade da moeda
 	 */
 	public function getQuantidadeDeMoeda() : float
     {
@@ -122,8 +122,8 @@ class Boleto
 	}
 
 	/**
-	 * @param quantidadeMoeda que será associada ao boleto
-	 * @return este boleto
+	 * @param float $quantidadeMoeda que será associada ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comQuantidadeMoeda(float $quantidadeMoeda) : Boleto
     {
@@ -132,7 +132,7 @@ class Boleto
 	}
 
 	/**
-	 * @return valor desse boleto
+	 * @return string valor desse boleto
 	 */
 	public function getValorBoleto() : string
     {
@@ -140,7 +140,7 @@ class Boleto
 	}
 
     /**
-	 * @return valor desse boleto
+	 * @return float desse boleto
 	 */
 	public function getValor() : float
     {
@@ -149,10 +149,10 @@ class Boleto
 
 
 	/**
-	 * @param valor em double que após ser convertido pra String
+	 * @param float $valor em double que após ser convertido pra String
 	 * será associado ao boleto @see Boleto#comValorBoleto(String)
 	 *
-	 * @return this
+	 * @return Boleto
 	 */
 
 	public function comValorBoleto(float $valor) : Boleto
@@ -168,7 +168,7 @@ class Boleto
     }
 
 	/**
-	 * @return espécie da moeda que por default é "R$"
+	 * @return string espécie da moeda que por default é "R$"
 	 */
 	public function getEspecieMoeda() : string
     {
@@ -176,17 +176,17 @@ class Boleto
 	}
 
 	/**
-	 * @param especieMoeda que será associada ao boleto
-	 * @return este boleto
+	 * @param string $especieMoeda que será associada ao boleto
+	 * @return Boleto este boleto
 	 */
-	public function comEspecieMoeda(string $especieMoeda)
+	public function comEspecieMoeda(string $especieMoeda) : Boleto
     {
 		$this->especieMoeda = $especieMoeda;
 		return $this;
 	}
 
 	/**
-	 * @return código da espécie da moeda que por default é "9" (real)
+	 * @return int código da espécie da moeda que por default é "9" (real)
 	 */
 	public function getCodigoEspecieMoeda() : int
     {
@@ -194,8 +194,8 @@ class Boleto
 	}
 
 	/**
-	 * @param codigoEspecieMoeda que será associado ao boleto
-	 * @return este boleto
+	 * @param int $codigoEspecieMoeda que será associado ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comCodigoEspecieMoeda(int $codigoEspecieMoeda) : Boleto
     {
@@ -204,7 +204,7 @@ class Boleto
 	}
 
 	/**
-	 * @return valor da moeda
+	 * @return float valor da moeda
 	 */
 	public function getValorMoeda() : float
     {
@@ -212,8 +212,8 @@ class Boleto
 	}
 
 	/**
-	 * @param valorMoeda que será associado ao boleto
-	 * @return this
+	 * @param float $valorMoeda que será associado ao boleto
+	 * @return Boleto
 	 */
 	public function comValorMoeda(float $valorMoeda) : Boleto
     {
@@ -222,7 +222,7 @@ class Boleto
 	}
 
 	/**
-	 * @return banco do boleto
+	 * @return Banco banco do boleto
 	 */
 	public function getBanco() : Banco
     {
@@ -230,8 +230,8 @@ class Boleto
 	}
 
 	/**
-	 * @param banco que será associado ao boleto
-	 * @return este boleto
+	 * @param Banco $banco que será associado ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comBanco(Banco $banco) : Boleto
     {
@@ -240,7 +240,7 @@ class Boleto
 	}
 
 	/**
-	 * @return pagador do banco
+	 * @return Pagador pagador do banco
 	 */
 	public function getPagador() : Pagador
     {
@@ -248,8 +248,8 @@ class Boleto
 	}
 
 	/**
-	 * @param pagador que será associado ao boleto
-	 * @return este boleto
+	 * @param Pagador $pagador que será associado ao boleto
+	 * @return Boleto este boleto
 	 */
 	public function comPagador(Pagador $pagador) : Boleto
     {
@@ -257,6 +257,9 @@ class Boleto
 		return $this;
 	}
 
+    /**
+     * @return Beneficiario
+     */
 	public function getBeneficiario() : Beneficiario
     {
 		return $this->beneficiario;
@@ -264,8 +267,8 @@ class Boleto
 
 	/**
 	 * Beneficiário do boleto
-	 * @param beneficiario beneficiário do Boleto
-	 * @return this este boleto.
+	 * @param Beneficiario $beneficiario do Boleto
+	 * @return Boleto este boleto.
 	 */
 	public function comBeneficiario(Beneficiario $beneficiario) : Boleto
     {
@@ -274,7 +277,7 @@ class Boleto
     }
 
     /**
-	 * @return lista de instruções do boleto
+	 * @return array lista de instruções do boleto
 	 */
 	public function getInstrucoes() : array
     {
@@ -282,9 +285,9 @@ class Boleto
 	}
 
 	/**
-	 * @param instrucoes que serão associadas ao boleto (limite de 5)
+	 * @param string[] $instrucoes que serão associadas ao boleto (limite de 5)
 	 * @throws IllegalArgumentException caso tenha mais de 5 instruções
-	 * @return este boleto
+	 * @return Boleto este boleto
 	 */
 	public function comInstrucoes(string ...$instrucoes) : Boleto
     {
@@ -296,7 +299,7 @@ class Boleto
 	}
 
 	/**
-	 * @return lista de descrições do boleto. <br>
+	 * @return array lista de descrições do boleto. <br>
 	 * Note que esse campo não aparece no boleto gerado em PNG
 	 */
 	public function getDescricoes() : array
@@ -305,10 +308,10 @@ class Boleto
 	}
 
 	/**
-	 * @param descricoes que serão asociadas ao boleto (limite de 5)
+	 * @param string[] $descricoes que serão asociadas ao boleto (limite de 5)
 	 * <br> Note que esse campo não aparece no boleto gerado em PNG
 	 * @throws IllegalArgumentException caso tenha mais de 5 descrições
-	 * @return este boleto
+	 * @return Boleto este boleto
 	 */
 	public function comDescricoes(string ...$descricoes) : Boleto
     {
@@ -320,11 +323,11 @@ class Boleto
 	}
 
     /**
-     * @param descricao que será adicionada à lista de descricoes do boleto
+     * @param string $descricao que será adicionada à lista de descricoes do boleto
      * <br> Note que esse campo não aparece no boleto gerado em PNG
      * @throws IllegalArgumentException caso a descrição seja nula
      * @throws UnsupportedOperationException caso a lista de descrições tenha 5 descrições
-     * @return este boleto
+     * @return Boleto este boleto
      */
     public function comDescricao(string $descricao) : Boleto
     {
@@ -334,13 +337,13 @@ class Boleto
         if(count($this->descricoes) == 5)
             throw new UnsupportedOperationException("maximo de descricoes permitidas atingido");
 
-        $this->descricoes[] = descricao;
+        $this->descricoes[] = $descricao;
 
         return $this;
     }
 
 	/**
-	 * @return lista de locais de pagamento do boleto
+	 * @return array lista de locais de pagamento do boleto
 	 */
 	public function getLocaisDePagamento() : array
     {
@@ -348,9 +351,9 @@ class Boleto
 	}
 
 	/**
-	 * @param locaisDePagamento que serão associados ao boleto (limite de 2 locais)
+	 * @param string[] $locaisDePagamento que serão associados ao boleto (limite de 2 locais)
 	 * @throws IllegalArgumentException tiver mais de 2 locais de pagamento
-	 * @return este boleto
+	 * @return Boleto este boleto
 	 */
 	public function comLocaisDePagamento(string ...$locaisDePagamento) : Boleto
     {
@@ -363,16 +366,15 @@ class Boleto
 	}
 
 	/**
-	 * @return fator de vencimento do boleto. Utilizado para geração do código de barras
+	 * @return string fator de vencimento do boleto. Utilizado para geração do código de barras
 	 */
 	public function getFatorVencimento() : string
     {
-        $fatorVencimento = new \BoletoBancario\Calculos\FatorVencimento();
-        return $fatorVencimento->calc($this->datas->getVencimento());
+        return $this->datas->getFatorVencimento();
 	}
 
 	/**
-	 * @return valor do boleto formatado (com 10 digitos)
+	 * @return string valor do boleto formatado (com 10 digitos)
 	 */
 	public function getValorFormatado() : string
     {
@@ -380,7 +382,7 @@ class Boleto
 	}
 
 	/**
-	 * @return número do documento formatado (com 4 digitos)
+	 * @return string número do documento formatado (com 4 digitos)
 	 */
 	public function getNumeroDoDocumentoFormatado() : string
     {
@@ -388,7 +390,7 @@ class Boleto
 	}
 
 	/**
-	 * @return agencia e codigo beneficiario (conta corrente) do banco
+	 * @return string agencia e codigo beneficiario (conta corrente) do banco
 	 */
 	public function getAgenciaECodigoBeneficiario() : string
     {
@@ -396,7 +398,7 @@ class Boleto
 	}
 
 	/**
-	 * @return nosso numero e codigo do documento para boleto
+	 * @return string nosso numero e codigo do documento para boleto
 	 */
 	public function getNossoNumeroECodDocumento() : string
     {
@@ -445,7 +447,7 @@ class Boleto
 		return $this;
 	}
 
-	public function getValorCobrado() : flaot
+	public function getValorCobrado() : float
     {
 		return $this->valorBoleto - $this->valorDescontos
                                   - $this->valorDeducoes
@@ -464,7 +466,7 @@ class Boleto
 
 	/**
 	 * Carteira do boleto
-	 * @return carteira
+	 * @return string carteira
 	 */
 	public function getCarteira() : string
     {
@@ -473,11 +475,11 @@ class Boleto
 
 	/**
 	 * Local de Pagamento
-	 * @return local de pagamento
+	 * @return string local de pagamento
 	 */
 	public function getLocalDePagamento() : string
     {
-		return $this->locaisDePagamento ? "" : locaisDePagamento[0];
+		return $this->locaisDePagamento ? "" : $this->locaisDePagamento[0];
 	}
 
     public function toArray() : array
