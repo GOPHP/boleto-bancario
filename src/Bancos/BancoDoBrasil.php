@@ -4,7 +4,6 @@ namespace BoletoBancario\Bancos;
 use BoletoBancario\{Boleto, Beneficiario};
 use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
 use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
-use BoletoBancario\Beneficiario;
 use BoletoBancario\Exception\CriacaoBoletoException;
 
 /**
@@ -108,25 +107,6 @@ class BancoDoBrasil extends AbstractBanco
 			return str_pad($beneficiario->getNossoNumero()[0], 17, STR_PAD_LEFT);
 
 		return str_pad($beneficiario->getNossoNumero()[0], 11, STR_PAD_LEFT);
-    }
-
-    /**
-     * @param Beneficiario $beneficiario
-     * @return string
-     */
-    public function getCampoLivreDv(Beneficiario $beneficiario) : string
-    {
-        $verificador = new VerificadorNossoNumero;
-        return $verificador->calc($this->getCampoLivre($beneficiario));
-    }
-
-    /**
-     * @param Beneficiario $beneficiario
-     * @return string
-     */
-    public function getCampoLivreComDv(Beneficiario $beneficiario) : string
-    {
-        return $this->getCampoLivre($beneficiario).$this->getCampoLivreDv($beneficiario);
     }
 
     /**

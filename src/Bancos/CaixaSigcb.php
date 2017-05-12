@@ -89,31 +89,20 @@ class CaixaSigcb extends AbstractBanco
 
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getNossoNumero()[0], 17, STR_PAD_LEFT);
-    }
-
-    public function getCampoLivreDv(Beneficiario $beneficiario) : string
-    {
-        $verificador = new VerificadorNossoNumero;
-        return $verificador->calc($this->getCampoLivre($beneficiario));
-    }
-
-    public function getCampoLivreComDv(Beneficiario $beneficiario) : string
-    {
-        return $this->getCampoLivre($beneficiario).$this->getCampoLivreDv($beneficiario);
+		return str_pad($beneficiario->getNossoNumero()[0], 17, 0, STR_PAD_LEFT);
     }
 
     public function getCarteiraFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getCarteira(),2, STR_PAD_LEFT);
+		return str_pad($beneficiario->getCarteira(), 2, 0, STR_PAD_LEFT);
 	}
 
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
         if ($this->convenioAntigo($beneficiario->getNumeroConvenio()))
-			return str_pad($beneficiario->getNumeroConvenio(), 6, STR_PAD_LEFT);
+			return str_pad($beneficiario->getNumeroConvenio(), 6, 0, STR_PAD_LEFT);
 
-		return str_pad($beneficiario->getNumeroConvenio(), 7, STR_PAD_LEFT);
+		return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
     }
 
     /**
