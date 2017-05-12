@@ -4,8 +4,12 @@ namespace BoletoBancario\Bancos;
 use BoletoBancario\{Boleto, Beneficiario};
 use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
 use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
+use BoletoBancario\Beneficiario;
 use BoletoBancario\Exception\CriacaoBoletoException;
 
+/**
+ * @package Bancos
+ */
 class BancoDoBrasil extends AbstractBanco
 {
     use \BoletoBancario\Calculos\CodigoBancoComDv;
@@ -23,7 +27,7 @@ class BancoDoBrasil extends AbstractBanco
     /**
 	 * Retorna o número desse banco, formatado com 3 dígitos
 	 *
-	 * @return numero formatado
+	 * @return string numero formatado
 	 */
     public function getNumeroBancoFormatado() : string
     {
@@ -32,6 +36,7 @@ class BancoDoBrasil extends AbstractBanco
 
     /**
      *  Pega nome de template de boleto de banco
+     * @return string
      */
     public function getTemplateName() : string
     {
@@ -41,7 +46,8 @@ class BancoDoBrasil extends AbstractBanco
     //BOLETO
 	/**
 	 * Linha digitável formatada
-	 * @return linha digitável
+     * @param Boleto $boleto
+	 * @return string linha digitável
 	 */
 	public function getLinhaDigitavel(Boleto $boleto) : string
     {
@@ -49,8 +55,12 @@ class BancoDoBrasil extends AbstractBanco
         return (new GeradorLinhaDigitavel())->geraLinhaDigitavelPara($linha);
 	}
 
-    /** Metodo mais importante, responsavel por gerar campo livre para
+    /**
+     * Metodo mais importante, responsavel por gerar campo livre para
      * codigo de barras
+     * @param Boleto $boleto
+     * @param bool $generateImage
+     * @return string
      */
     public function geraCodigoDeBarrasPara(Boleto $boleto, bool $generateImage = false) : string
     {
@@ -88,6 +98,10 @@ class BancoDoBrasil extends AbstractBanco
         return $codigoDeBarras;
     }
 
+    /**
+     * @param Beneficiario $beneficiario
+     * @return string
+     */
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string
     {
         if ($beneficiario->getCarteira() == "18" || $beneficiario->getCarteira() == "16")
@@ -96,22 +110,38 @@ class BancoDoBrasil extends AbstractBanco
 		return str_pad($beneficiario->getNossoNumero()[0], 11, STR_PAD_LEFT);
     }
 
+    /**
+     * @param Beneficiario $beneficiario
+     * @return string
+     */
     public function getCampoLivreDv(Beneficiario $beneficiario) : string
     {
         $verificador = new VerificadorNossoNumero;
         return $verificador->calc($this->getCampoLivre($beneficiario));
     }
 
+    /**
+     * @param Beneficiario $beneficiario
+     * @return string
+     */
     public function getCampoLivreComDv(Beneficiario $beneficiario) : string
     {
         return $this->getCampoLivre($beneficiario).$this->getCampoLivreDv($beneficiario);
     }
 
+    /**
+     * @param Beneficiario $beneficiario
+     * @return string
+     */
     public function getCarteiraFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getCarteira(),2, STR_PAD_LEFT);
+		return str_pad($beneficiario->getCarteira(), 2, STR_PAD_LEFT);
 	}
 
+    /**
+     * @param Beneficiario $beneficiario
+     * @return string
+     */
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
         if ($this->convenioAntigo($beneficiario->getNumeroConvenio()))
@@ -125,7 +155,6 @@ class BancoDoBrasil extends AbstractBanco
     {
         return $convenio < 1000000;
     }
-
 
 	private function getNossoNumeroParaCarteiras17e18(Beneficiario $beneficiario) : string
     {

@@ -194,39 +194,6 @@ class Beneficiario
         return $this;
     }
 
-    // public function getNNum() : string
-    // {
-    //     $formata = new FormataNumero;
-    //
-    //     return  $formata->calc($this->nossoNumeroConst[0], 1, 0).
-    //             $formata->calc($this->nossoNumeroConst[1], 1, 0).
-    //             $formata->calc($this->nossoNumero[0], 3, 0).
-    //             $formata->calc($this->nossoNumero[1], 3, 0).
-    //             $formata->calc($this->nossoNumero[2], 9, 0);
-    // }
-    //
-    // public function getCampoLivre() : string
-    // {
-    //     $formata = new FormataNumero;
-    //     return $this->conta.$this->contaDv.
-    //         $formata->calc($this->nossoNumero[0], 3, 0).
-    //         $formata->calc($this->nossoNumeroConst[0], 1, 0).
-    //         $formata->calc($this->nossoNumero[1], 3, 0).
-    //         $formata->calc($this->nossoNumeroConst[1], 1, 0).
-    //         $formata->calc($this->nossoNumero[2], 9, 0);
-    // }
-    //
-    // public function getCampoLivreDv() : string
-    // {
-    //     $verificador = new VerificadorNossoNumero;
-    //     return $verificador->calc($this->getCampoLivre());
-    // }
-    //
-    // public function getCampoLivreComDv() : string
-    // {
-    //     return $this->getCampoLivre().$this->getCampoLivreDv();
-    // }
-
     private function getAgenciaCodigo() : string
     {
         return sprintf("%d / %s-%d", $this->agencia,
