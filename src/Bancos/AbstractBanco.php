@@ -11,6 +11,7 @@ abstract class AbstractBanco implements Banco
     protected $codigobanco;
     protected $nummoeda;
     protected $codigoBancoComDv;
+    protected $codigoDeBarrasBuilder;
 
     public function getCodigoBanco() : int
     {
@@ -27,6 +28,10 @@ abstract class AbstractBanco implements Banco
         return $this->codigoBancoComDv;
     }
 
+    public function getDigitoBoleto()
+    {
+        return $this->codigoDeBarrasBuilder->getDigitoBoleto();
+    }
 
     public function toArray() : array
     {

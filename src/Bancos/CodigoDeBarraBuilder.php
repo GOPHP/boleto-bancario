@@ -9,6 +9,7 @@ class CodigoDeBarraBuilder
 {
     private $codigoDeBarras;
     private $boleto;
+    private $digitoBoleto;
 
     public function __construct(Boleto $boleto)
     {
@@ -23,12 +24,17 @@ class CodigoDeBarraBuilder
         $this->codigoDeBarras .= $this->boleto->getDatas()->getFatorVencimento();
         $this->codigoDeBarras .= $this->boleto->getValorFormatado();
         $this->codigoDeBarras .= $campoLivre;
-        $digito = (new ModuloOnze())->calc($this->codigoDeBarras);
-        $this->codigoDeBarras = $this->insert($this->codigoDeBarras, $digito, 4);
+        $this->digitoBoleto = (new ModuloOnze())->calc($this->codigoDeBarras);
+        $this->codigoDeBarras = $this->insert($this->codigoDeBarras, $this->digitoBoleto, 4);
 
         $this->validaTamahoDoCodigoDeBarrasCompletoGerado();
 
         return $this->codigoDeBarras;
+    }
+
+    public function getDigitoBoleto()
+    {
+        return $this->digitoBoleto;
     }
 
     private function insert($string, $stringInsert, $pos)

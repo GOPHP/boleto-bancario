@@ -89,7 +89,8 @@ class BancoDoBrasil extends AbstractBanco
 					"Verifique carteira e demais dados.");
         }
 
-        $codigoDeBarras =  (new CodigoDeBarraBuilder($boleto))->comCampoLivre($campoLivre);
+        $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
+        $codigoDeBarras =  $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
         if($generateImage)
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);

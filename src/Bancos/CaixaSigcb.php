@@ -79,7 +79,9 @@ class CaixaSigcb extends AbstractBanco
             throw new IllegalArgumentException("A carteira digitada não é suportada: ".$carteira);
         }
 
-        $codigoDeBarras = (new CodigoDeBarraBuilder($boleto))->comCampoLivre($campoLivre);
+        $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
+
+        $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
         if($generateImage)
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);

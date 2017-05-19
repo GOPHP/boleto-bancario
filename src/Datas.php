@@ -21,6 +21,17 @@ class Datas
     }
 
     /**
+     * @param int $fatorVencimento
+     * @return Datas
+     */
+    public function comFatorVencimento($fatorVencimento) : Datas
+    {
+        $this->fatorVencimento = $fatorVencimento;
+        return $this;
+    }
+
+
+    /**
      * @param \DateTime $documento
      * @return Datas
      */

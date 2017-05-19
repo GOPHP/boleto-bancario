@@ -5,7 +5,6 @@ use BoletoBancario\{Boleto, Beneficiario};
 use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
 use BoletoBancario\Bancos\CodigoDeBarraBuilder;
 use BoletoBancario\Calculos\{ VerificadorNossoNumero };
-use BoletoBancario\Exception\IllegalArgumentException;
 
 class Bradesco extends AbstractBanco
 {
@@ -75,7 +74,8 @@ class Bradesco extends AbstractBanco
         $campoLivre .= str_pad($this->nossoNumero3, 9, 0, STR_PAD_LEFT);
         $campoLivre .= (new VerificadorNossoNumero)->calc($campoLivre);
 
-        $codigoDeBarras = (new CodigoDeBarraBuilder($boleto))->comCampoLivre($campoLivre);
+        $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
+        $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
         if($generateImage)
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
