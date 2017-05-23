@@ -3,7 +3,7 @@ namespace BoletoBancario\Bancos;
 
 use BoletoBancario\{Boleto, Beneficiario};
 use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
-use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
+use BoletoBancario\Calculos\{ FormataNumero };
 use BoletoBancario\Exception\CriacaoBoletoException;
 
 /**

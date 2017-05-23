@@ -67,11 +67,13 @@ class Bradesco extends AbstractBanco
 
         $nossoNumeroCompleto = $this->getNossoNumeroFormatado($beneficiario);
         $campoLivre .= $beneficiario->getConta().$beneficiario->getContaDv();
-        $campoLivre .= str_pad($this->nossoNumero1, 3, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumeroConst1, 1, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumero2, 3, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumeroConst2, 1, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumero3, 9, 0, STR_PAD_LEFT);
+
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 2, 3), 3, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 0, 1), 1, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 5, 3), 3, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 1, 1), 1, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 8), 9, 0, STR_PAD_LEFT);
+
         $campoLivre .= (new VerificadorNossoNumero)->calc($campoLivre);
 
         $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);

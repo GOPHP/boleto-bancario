@@ -17,6 +17,8 @@ class CaixaSigcb extends AbstractBanco
     private $nossoNumeroConst1;
     private $nossoNumeroConst2;
 
+    private $campoLivreDv;
+
     public function __construct()
     {
         $this->codigobanco = "104";
@@ -68,12 +70,16 @@ class CaixaSigcb extends AbstractBanco
 
         $nossoNumeroCompleto = $this->getNossoNumeroFormatado($beneficiario);
         $campoLivre .= $beneficiario->getConta().$beneficiario->getContaDv();
-        $campoLivre .= str_pad($this->nossoNumero1, 3, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumeroConst1, 1, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumero2, 3, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumeroConst2, 1, 0, STR_PAD_LEFT);
-        $campoLivre .= str_pad($this->nossoNumero3, 9, 0, STR_PAD_LEFT);
-        $campoLivre .= (new VerificadorNossoNumero)->calc($campoLivre);
+
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 2, 3), 3, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 0, 1), 1, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 5, 3), 3, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 1, 1), 1, 0, STR_PAD_LEFT);
+        $campoLivre .= str_pad(substr($nossoNumeroCompleto, 8), 9, 0, STR_PAD_LEFT);
+
+        $this->campoLivreDv = (new VerificadorNossoNumero)->calc($campoLivre);
+
+        $campoLivre .= $this->campoLivreDv;
 
         if($beneficiario->getCarteira() != "RG" && $beneficiario->getCarteira() != "SR") {
             throw new IllegalArgumentException("A carteira digitada não é suportada: ".$carteira);
@@ -87,6 +93,11 @@ class CaixaSigcb extends AbstractBanco
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
 
         return $codigoDeBarras;
+    }
+
+    public function getCampoLivreDv()
+    {
+        return $this->campoLivreDv;
     }
 
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string

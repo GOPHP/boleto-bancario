@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.0 Transitional//EN'>
 <html>
     <head>
-        <title><?php echo $identificacao; ?></title>
+        <title><?= $identificacao; ?></title>
         <meta http-equiv=Content-Type content=text/html charset=utf-8>
         <style type=text/css>
             .cp {  font: bold 10px Arial; color: black}
@@ -44,9 +44,9 @@
                         </p>
                         <br />
                         <span class="ld2">
-                            &nbsp;&nbsp;&nbsp;&nbsp;Linha Digitável: &nbsp;<?php echo $linha_digitavel; ?>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Linha Digitável: &nbsp;<?= $linha_digitavel; ?>
                             <br />
-                            &nbsp;&nbsp;&nbsp;&nbsp;Valor: &nbsp;&nbsp;R$ <?php echo $valor_boleto; ?>
+                            &nbsp;&nbsp;&nbsp;&nbsp;Valor: &nbsp;&nbsp;R$ <?= $valor_boleto; ?>
                             <br>
                         </span>
                     </div>
@@ -243,7 +243,7 @@
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top width=120 height=12>
                         <span class="campo">
-                            <?php $nossoNumero; ?>
+                            <?= $nossoNumero; ?>
                         </span>
                     </td>
                 </tr>
@@ -722,25 +722,25 @@
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top  width=63>
                         <div align=left><span class="campo">
-<?php echo $especie; ?>$
+<?= $especie; ?>
                             </span>
                         </div>
                     </td>
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top  width=53><span class="campo">
-<?php echo $quantidade; ?>
+<?= $quantidade; ?>
                         </span>
                     </td>
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top  width=82>
                         <span class="campo">
-<?php echo $valor_unitario; ?>
+<?= $valor_unitario; ?>
                         </span>
                     </td>
                     <td class=cp valign=top width=7 height=12> <img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top align=right width=180 height=12>
                         <span class="campo">
-<?php echo $valor_boleto; ?>
+<?= $valor_boleto; ?>
                         </span>
                     </td>
                 </tr>
@@ -1000,7 +1000,7 @@
                 <tr>
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top width=659 height=12><span class="campo">
-                        <?= $beneficiario['endereco']['logradouro']; ?>
+                        <?= $pagador['endereco']['logradouro']; ?>
                         </span>
                     </td>
                 </tr>
@@ -1012,7 +1012,7 @@
                     <td class=ct valign=top width=7 height=13><img height=13 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top width=472 height=13>
                         <span class="campo">
-                            <?= $beneficiario['endereco']['cidade']; ?>, <?= $beneficiario['endereco']['uf']; ?>,
+                            <?= $pagador['endereco']['cidade']; ?>, <?= $pagador['endereco']['uf']; ?>,
                         </span>
                     </td>
                     <td class=ct valign=top width=7 height=13><img height=13 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
@@ -1048,7 +1048,7 @@
         <table cellSpacing=0 cellPadding=0 width=666 border=0>
             <tbody>
                 <tr>
-                    <td vAlign=bottom align=left height=50><?php echo $codigo_barras; ?>
+                    <td vAlign=bottom align=left height=50><?= $codigo_barras; ?>
                     </td>
                 </tr>
             </tbody>
