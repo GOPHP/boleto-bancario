@@ -61,7 +61,7 @@ class Beneficiario
 
     public function comCodigoBeneficiario(string $codigoBenficiario) : Beneficiario
     {
-        $this->codigoBenficiario = $codigoBenficiario;
+        $this->codigoBeneficiario = $codigoBenficiario;
         return $this;
     }
 
@@ -116,7 +116,10 @@ class Beneficiario
     }
 
     public function getDigitoNossoNumero() : string
-    {
+    {   
+        if(! $this->digitoNossoNumero) 
+            $this->digitoNossoNumero = (new VerificadorNossoNumero)->calc($this->getNossoNumero()[0]);
+
         return $this->digitoNossoNumero;
     }
 
@@ -196,8 +199,12 @@ class Beneficiario
 
     private function getAgenciaCodigo() : string
     {
-        return sprintf("%d / %s-%d", $this->agencia,
-            (string) $this->conta, $this->contaDv);
+        return sprintf(
+            "%d/%s-%d",
+            $this->agencia,
+            $this->codigoBeneficiario,
+            $this->digitoCodigoBeneficiario
+        );
     }
 
     public function toArray() : array
@@ -210,7 +217,6 @@ class Beneficiario
             'digitoCodigoBeneficiario' => $this->digitoCodigoBeneficiario,
             'carteira' => $this->carteira,
             'nossoNumeroConst' => $this->nossoNumeroConst,
-            'digitoNossoNumero' => $this->digitoNossoNumero,
             'nomeBeneficiario' => $this->nomeBeneficiario,
             'documento'  => $this->documento,
             'numeroConvenio' => $this->numeroConvenio,

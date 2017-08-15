@@ -243,7 +243,7 @@
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top width=120 height=12>
                         <span class="campo">
-                            <?= $nossoNumero; ?>
+                            <?= $nossoNumero; ?>-<?= $nossoNumero_dv; ?>
                         </span>
                     </td>
                 </tr>
@@ -646,7 +646,7 @@
                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
                     <td class=cp valign=top align=right width=180 height=12>
                         <span class="campo">
-                            <?= $nossoNumero; ?>
+                            <?= $nossoNumero; ?>-<?= $nossoNumero_dv; ?>
                         </span>
                     </td>
                 </tr>

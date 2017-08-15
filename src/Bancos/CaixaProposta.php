@@ -2,9 +2,9 @@
 namespace BoletoBancario\Bancos;
 
 use BoletoBancario\{Boleto, Beneficiario};
-use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
+use BoletoBancario\Bancos\Gerador\GeradorLinhaDigitavel;
 use BoletoBancario\Bancos\CodigoDeBarraBuilder;
-use BoletoBancario\Calculos\{ VerificadorNossoNumero };
+use BoletoBancario\Calculos\VerificadorNossoNumero;
 use BoletoBancario\Exception\IllegalArgumentException;
 
 class CaixaProposta extends AbstractBanco
@@ -19,10 +19,10 @@ class CaixaProposta extends AbstractBanco
     }
 
     /**
-	 * Retorna o número desse banco, formatado com 3 dígitos
-	 *
-	 * @return string numero formatado
-	 */
+    * Retorna o número desse banco, formatado com 3 dígitos
+    *
+    * @return string numero formatado
+    */
     public function getNumeroBancoFormatado() : string
     {
         return $this->codigobanco;
@@ -37,16 +37,16 @@ class CaixaProposta extends AbstractBanco
     }
 
     //BOLETO
-	/**
-	 * Linha digitável formatada
-     * @param Boleto $boleto
-	 * @return string linha digitável
-	 */
-	public function getLinhaDigitavel(Boleto $boleto) : string
+    /**
+    * Linha digitável formatada
+    * @param Boleto $boleto
+    * @return string linha digitável
+    */
+    public function getLinhaDigitavel(Boleto $boleto) : string
     {
         $linha = $this->geraCodigoDeBarrasPara($boleto);
         return (new GeradorLinhaDigitavel())->geraLinhaDigitavelPara($linha);
-	}
+    }
 
 
     /**
@@ -73,7 +73,7 @@ class CaixaProposta extends AbstractBanco
 
         $campoLivre .= $this->campoLivreDv;
 
-        if($beneficiario->getCarteira() != "RG" && $beneficiario->getCarteira() != "SR") {
+        if ($beneficiario->getCarteira() != "RG" && $beneficiario->getCarteira() != "SR") {
             throw new IllegalArgumentException("A carteira digitada não é suportada: ".$carteira);
         }
 
@@ -81,7 +81,7 @@ class CaixaProposta extends AbstractBanco
 
         $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
-        if($generateImage)
+        if ($generateImage)
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
 
         return $codigoDeBarras;
@@ -94,20 +94,26 @@ class CaixaProposta extends AbstractBanco
 
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getNossoNumero()[0], 17, 0, STR_PAD_LEFT);
+        return str_pad($beneficiario->getNossoNumero()[0], 17, 0, STR_PAD_LEFT);
+    }
+
+    public function getDigitoNossoNumeroFormatado(Beneficiario $beneficiario) : string
+    {
+        $nossoNumero = $this->getNossoNumeroFormatado($beneficiario);
+        return (new VerificadorNossoNumero)->calc($nossoNumero);
     }
 
     public function getCarteiraFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getCarteira(), 2, 0, STR_PAD_LEFT);
-	}
+        return str_pad($beneficiario->getCarteira(), 2, 0, STR_PAD_LEFT);
+    }
 
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
         if ($this->convenioAntigo($beneficiario->getNumeroConvenio()))
-			return str_pad($beneficiario->getNumeroConvenio(), 6, 0, STR_PAD_LEFT);
+            return str_pad($beneficiario->getNumeroConvenio(), 6, 0, STR_PAD_LEFT);
 
-		return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
+        return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
     }
 
 

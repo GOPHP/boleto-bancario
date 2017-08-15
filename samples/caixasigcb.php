@@ -35,18 +35,20 @@ $pagador = (new Pagador)->comNome("Fulano da Silva")
                         ->comDocumento("111.222.333-12")
                         ->comEndereco($enderecoPagador);
 
+
 $banco = new CaixaSigcb();
 $banco->comNossoNumero1('000')
       ->comNossoNumero2('000')
       ->comNossoNumero3('000000019')
-      ->comNossoNumeroConst1('1')
-      ->comNossoNumeroConst2('4');
+      ->comNossoNumeroConst1(rand(0,9))
+      ->comNossoNumeroConst2('0');
 
 $boleto = (Boleto::novoBoleto())->comBanco($banco)
                         ->comDatas($datas)
                         ->comBeneficiario($beneficiario)
                         ->comPagador($pagador)
                         ->comValorBoleto(2952.95)
+                        ->comEspecieMoeda("R$")
                         ->comNumeroDoDocumento("27.030195.10")
                         ->comInstrucoes(
                             "- Sr. Caixa, cobrar multa de 2% após o vencimento",

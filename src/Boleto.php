@@ -492,6 +492,7 @@ class Boleto
             'especie_doc' => $this->especiDocumento,
             'quantidade' => 0,
             'nossoNumero' => $this->banco->getNossoNumeroFormatado($this->getBeneficiario()),
+			'nossoNumero_dv' => $this->banco->getDigitoNossoNumeroFormatado($this->getBeneficiario()),
             'numero_documento' => $this->numeroDocumento,
             'linha_digitavel' => $this->banco->getLinhaDigitavel($this),
             'codigo_barras' => $this->getCodigoDeBarras(),
