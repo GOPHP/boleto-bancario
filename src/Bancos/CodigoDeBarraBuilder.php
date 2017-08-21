@@ -21,6 +21,7 @@ class CodigoDeBarraBuilder
     {
         $this->codigoDeBarras .= $this->boleto->getBanco()->getNumeroBancoFormatado();
         $this->codigoDeBarras .= $this->boleto->getBanco()->getNumMoeda();
+        
         $this->codigoDeBarras .= $this->boleto->getDatas()->getFatorVencimento();
         $this->codigoDeBarras .= $this->boleto->getValorFormatado();
         $this->codigoDeBarras .= $campoLivre;
@@ -28,7 +29,6 @@ class CodigoDeBarraBuilder
         $this->codigoDeBarras = $this->insert($this->codigoDeBarras, $this->digitoBoleto, 4);
 
         $this->validaTamahoDoCodigoDeBarrasCompletoGerado();
-
         return $this->codigoDeBarras;
     }
 
@@ -42,11 +42,12 @@ class CodigoDeBarraBuilder
         return substr($string, 0, $pos) . $stringInsert . substr($string, $pos);
     }
 
-	private function validaTamahoDoCodigoDeBarrasCompletoGerado() {
-		if (strlen($this->codigoDeBarras) != 44) {
-			throw new CriacaoBoletoException("Erro na geração do código " .
-				"de barras. Número de digitos diferente de 44. Verifique ".
-				"se todos os dados foram preenchidos corretamente.");
-		}
-	}
+    private function validaTamahoDoCodigoDeBarrasCompletoGerado()
+    {
+        if (strlen($this->codigoDeBarras) != 44) {
+            throw new CriacaoBoletoException("Erro na geração do código " .
+                "de barras. Número de digitos diferente de 44. Verifique ".
+                "se todos os dados foram preenchidos corretamente.");
+        }
+    }
 }

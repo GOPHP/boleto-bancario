@@ -14,7 +14,7 @@ class CaixaProposta extends AbstractBanco
     public function __construct()
     {
         $this->codigobanco = "104";
-        $this->nummoeda = "0";
+        $this->nummoeda = "9";
         $this->codigoBancoComDv = "104-0";
     }
 

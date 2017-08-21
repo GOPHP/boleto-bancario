@@ -672,13 +672,15 @@
                             <tbody>
                                 <tr>
                                     <td class=ct valign=top width=7 height=13><img height=13 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
-                                    <td class=ct valign=top width=180 height=13>(-)
-                                        Desconto
+                                    <td class=ct valign=top width=180 height=13>
+                                        Valor do Documento
                                     </td>
                                 </tr>
                                 <tr>
                                     <td class=cp valign=top width=7 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
-                                    <td class=cp valign=top align=right width=180 height=12></td>
+                                    <td class=cp valign=top align=right width=180 height=12>
+                                        <?= $especie; ?> <?= $valor_boleto ?>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td valign=top width=7 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0></td>
@@ -711,8 +713,8 @@
                             <tbody>
                                 <tr>
                                     <td class=ct valign=top width=7 height=13><img height=13 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
-                                    <td class=ct valign=top width=180 height=13>(-)
-                                        Outras deduções / Abatimento
+                                    <td class=ct valign=top width=180 height=13>
+                                        (-) Desconto/Abatimento
                                     </td>
                                 </tr>
                                 <tr>
@@ -760,7 +762,8 @@
                                 </tr>
                                 <tr>
                                     <td class=cp valign=top width=6 height=12></td>
-                                    <td class=cp valign=top align=right width=182 height=12></td>
+                                    <td class=cp valign=top align=right width=182 height=12>
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>

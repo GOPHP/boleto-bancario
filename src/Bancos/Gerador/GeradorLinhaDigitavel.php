@@ -21,9 +21,9 @@ class GeradorLinhaDigitavel
         $builder .= substr($codigoDeBarras, 19, 5);
         $builder .= $moduloDez->calc($builder);
         $builder .= substr($codigoDeBarras, 24, 10);
-        $builder .= $moduloDez->calc( substr($builder, 10, 10) );
+        $builder .= $moduloDez->calc(substr($builder, 10, 10));
         $builder .= substr($codigoDeBarras, 34);
-        $builder .= $moduloDez->calc( substr($builder, 21, 10) );
+        $builder .= $moduloDez->calc(substr($builder, 21, 10));
         $builder .= substr($codigoDeBarras, 4, 1);
         $builder .= substr($codigoDeBarras, 5, 4);
         $builder .= substr($codigoDeBarras, 9, 10);

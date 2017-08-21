@@ -40,7 +40,7 @@ $pagador = (new Pagador)->comNome("Breno Douglas Araujo Souza")
 $banco = new CaixaProposta();
 
 
-while (true):
+while (true) :
     $beneficiario->comNossoNumero('14000000000'.rand(900020, 999999));
     $boleto = (Boleto::novoBoleto())->comBanco($banco)
                             ->comDatas($datas)
@@ -68,7 +68,7 @@ while (true):
 
     $boleto->toArray();
 
-    if ($banco->getCampoLivreDv() == 0) {
+    if ($banco->getCampoLivreDv() == 9) {
         $gerador = new \BoletoBancario\Transformer\TransformerBoletoHtml();
         echo $gerador->gera($boleto);
         exit;
