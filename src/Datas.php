@@ -147,5 +147,4 @@ class Datas
             'processado' => $this->processamento->format("d/m/Y")
         ];
     }
-
 }

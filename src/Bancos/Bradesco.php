@@ -1,10 +1,11 @@
 <?php
 namespace BoletoBancario\Bancos;
 
-use BoletoBancario\{Boleto, Beneficiario};
-use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
+use BoletoBancario\Boleto;
+use BoletoBancario\Beneficiario;
+use BoletoBancario\Bancos\Gerador\GeradorLinhaDigitavel;
 use BoletoBancario\Bancos\CodigoDeBarraBuilder;
-use BoletoBancario\Calculos\{ VerificadorNossoNumero };
+use BoletoBancario\Calculos\VerificadorNossoNumero;
 
 class Bradesco extends AbstractBanco
 {
@@ -24,10 +25,10 @@ class Bradesco extends AbstractBanco
     }
 
     /**
-	 * Retorna o número desse banco, formatado com 3 dígitos
-	 *
-	 * @return string numero formatado
-	 */
+     * Retorna o número desse banco, formatado com 3 dígitos
+     *
+     * @return string numero formatado
+     */
     public function getNumeroBancoFormatado() : string
     {
         return $this->codigobanco;
@@ -42,16 +43,16 @@ class Bradesco extends AbstractBanco
     }
 
     //BOLETO
-	/**
-	 * Linha digitável formatada
+    /**
+     * Linha digitável formatada
      * @param Boleto $boleto
-	 * @return string linha digitável
-	 */
-	public function getLinhaDigitavel(Boleto $boleto) : string
+     * @return string linha digitável
+     */
+    public function getLinhaDigitavel(Boleto $boleto) : string
     {
         $linha = $this->geraCodigoDeBarrasPara($boleto);
         return (new GeradorLinhaDigitavel())->geraLinhaDigitavelPara($linha);
-	}
+    }
 
 
     /**
@@ -59,7 +60,7 @@ class Bradesco extends AbstractBanco
      * @param bool $generateImage
      * @return string
      */
-    public function geraCodigoDeBarrasPara(Boleto $boleto,  bool $generateImage = false) : string
+    public function geraCodigoDeBarrasPara(Boleto $boleto, $generateImage = false) : string
     {
         $beneficiario = $boleto->getBeneficiario();
         $campoLivre = '';
@@ -79,25 +80,25 @@ class Bradesco extends AbstractBanco
         $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
         $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
-        if($generateImage)
+        if ($generateImage) {
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
-
+        }
         return $codigoDeBarras;
     }
 
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getNossoNumero()[0], 11, 0, STR_PAD_LEFT);
+        return str_pad($beneficiario->getNossoNumero()[0], 11, 0, STR_PAD_LEFT);
     }
 
     public function getCarteiraFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getCarteira(), 2, 0, STR_PAD_LEFT);
-	}
+        return str_pad($beneficiario->getCarteira(), 2, 0, STR_PAD_LEFT);
+    }
 
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
-		return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
+        return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
     }
 
     /**
@@ -149,5 +150,4 @@ class Bradesco extends AbstractBanco
         $this->nossoNumeroConst2 = $nossoNumeroConst2;
         return $this;
     }
-
 }

@@ -16,8 +16,7 @@ class Pagador
         string $nome = "",
         string $documento = "",
         Endereco $endereco = null
-    )
-    {
+    ) {
         $this->nome = $nome;
         $this->documento = $documento;
         $this->endereco = $nedereco ?? new Endereco;

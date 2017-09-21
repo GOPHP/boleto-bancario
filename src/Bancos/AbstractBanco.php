@@ -4,7 +4,6 @@ namespace BoletoBancario\Bancos;
 use BoletoBancario\Banco;
 use BoletoBancario\Bancos\Gerador\GeradorCodigoDeBarra;
 
-
 abstract class AbstractBanco implements Banco
 {
 

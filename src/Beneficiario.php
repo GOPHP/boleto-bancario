@@ -2,7 +2,9 @@
 namespace BoletoBancario;
 
 use BoletoBancario\Exception\IllegalArgumentException;
-use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero, VerificadorBeneficiario };
+use BoletoBancario\Calculos\FormataNumero;
+use BoletoBancario\Calculos\VerificadorNossoNumero;
+use BoletoBancario\Calculos\VerificadorBeneficiario;
 
 class Beneficiario
 {
@@ -94,9 +96,9 @@ class Beneficiario
 
     public function comNossoNumero(string ...$nossoNumero) : Beneficiario
     {
-        if (count($nossoNumero) != 3 && count($nossoNumero) != 1 )
+        if (count($nossoNumero) != 3 && count($nossoNumero) != 1) {
             throw new IllegalArgumentException("É necessário nosso numero 1, 2 e 3");
-
+        }
         $this->nossoNumero = $nossoNumero;
         return $this;
     }
@@ -108,18 +110,18 @@ class Beneficiario
 
     public function comNossoNumeroConst(string ...$nossoNumeroConst) : Beneficiario
     {
-        if (count($nossoNumeroConst) != 2)
+        if (count($nossoNumeroConst) != 2) {
             throw new IllegalArgumentException("É necessário dois numeros const");
-
+        }
         $this->nossoNumeroConst = $nossoNumeroConst;
         return $this;
     }
 
     public function getDigitoNossoNumero() : string
-    {   
-        if(! $this->digitoNossoNumero) 
+    {
+        if (! $this->digitoNossoNumero) {
             $this->digitoNossoNumero = (new VerificadorNossoNumero)->calc($this->getNossoNumero()[0]);
-
+        }
         return $this->digitoNossoNumero;
     }
 
@@ -181,7 +183,7 @@ class Beneficiario
     public function comConta(string $conta) : Beneficiario
     {
         $formata = new FormataNumero();
-        $this->conta = $formata->calc( $conta, 6, 0 );
+        $this->conta = $formata->calc($conta, 6, 0);
         return $this;
     }
 

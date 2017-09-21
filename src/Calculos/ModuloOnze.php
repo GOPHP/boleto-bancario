@@ -15,15 +15,19 @@ class ModuloOnze
         $arrayReverso = array_reverse($numerosArray);
 
         #Varre todo array remapeando para um array com a multiplicações dos fatores
-        $resultadoMultiplicacao = array_map(function($item) use($base, &$fator) {
-           if ($fator > $base) $fator = 2;
-           return (int) $item * $fator++;
+        $resultadoMultiplicacao = array_map(function ($item) use ($base, &$fator) {
+            if ($fator > $base) {
+                $fator = 2;
+            }
+            return (int) $item * $fator++;
         }, $arrayReverso);
 
         #Efetua a soma do array
         $soma = array_sum($resultadoMultiplicacao);
 
-        if ($r == 1) return $soma % 11;
+        if ($r == 1) {
+            return $soma % 11;
+        }
 
         #Calculo do modulo 11
         $soma *= 10;

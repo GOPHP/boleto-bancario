@@ -17,7 +17,7 @@ class TransformerBoletoHtml
     public function gera(Boleto $boleto) : string
     {
         $params = $boleto->toArray();
-        $templateName = $boleto->getBanco()->getTemplateName().".php";
+        $templateName = $boleto->getTemplateName().".php";
 
         ob_start();
         extract($params);
@@ -26,5 +26,4 @@ class TransformerBoletoHtml
 
         return $result;
     }
-
 }

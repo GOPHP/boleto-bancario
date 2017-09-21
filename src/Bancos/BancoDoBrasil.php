@@ -1,9 +1,11 @@
 <?php
 namespace BoletoBancario\Bancos;
 
-use BoletoBancario\{Boleto, Beneficiario};
-use BoletoBancario\Bancos\Gerador\{GeradorLinhaDigitavel};
-use BoletoBancario\Calculos\{ FormataNumero, VerificadorNossoNumero };
+use BoletoBancario\Boleto;
+use BoletoBancario\Beneficiario;
+use BoletoBancario\Bancos\Gerador\GeradorLinhaDigitavel;
+use BoletoBancario\Calculos\FormataNumero;
+use BoletoBancario\Calculos\VerificadorNossoNumero;
 use BoletoBancario\Exception\CriacaoBoletoException;
 
 /**
@@ -79,7 +81,7 @@ class BancoDoBrasil extends AbstractBanco
                 $campoLivre .= $beneficiario->getCodigoBeneficiario();
                 $campoLivre .= $this->getCarteiraFormatado($beneficiario);
             }
-        } else if ($beneficiario->getCarteira() == "17" || $beneficiario->getCarteira() == "18") {
+        } elseif ($beneficiario->getCarteira() == "17" || $beneficiario->getCarteira() == "18") {
             $campoLivre .= self::ZEROS_CONVENIOS_NOVOS;
             $campoLivre .= $this->getNumeroConvenioFormatado($beneficiario);
             $campoLivre .= $this->getNossoNumeroParaCarteiras17e18($beneficiario);
@@ -92,9 +94,9 @@ class BancoDoBrasil extends AbstractBanco
         $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
         $codigoDeBarras =  $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
-        if ($generateImage)
+        if ($generateImage) {
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
-
+        }
         return $codigoDeBarras;
     }
 
@@ -104,8 +106,9 @@ class BancoDoBrasil extends AbstractBanco
      */
     public function getNossoNumeroFormatado(Beneficiario $beneficiario) : string
     {
-        if ($beneficiario->getCarteira() == "18" || $beneficiario->getCarteira() == "16")
+        if ($beneficiario->getCarteira() == "18" || $beneficiario->getCarteira() == "16") {
             return str_pad($beneficiario->getNossoNumero()[0], 17, STR_PAD_LEFT);
+        }
 
         return str_pad($beneficiario->getNossoNumero()[0], 11, STR_PAD_LEFT);
     }
@@ -131,9 +134,9 @@ class BancoDoBrasil extends AbstractBanco
      */
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
-        if ($this->convenioAntigo($beneficiario->getNumeroConvenio()))
+        if ($this->convenioAntigo($beneficiario->getNumeroConvenio())) {
             return str_pad($beneficiario->getNumeroConvenio(), 6, STR_PAD_LEFT);
-
+        }
         return str_pad($beneficiario->getNumeroConvenio(), 7, STR_PAD_LEFT);
     }
 

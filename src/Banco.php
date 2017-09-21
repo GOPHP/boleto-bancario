@@ -4,10 +4,10 @@ namespace BoletoBancario;
 interface Banco
 {
     /**
-	 * Retorna o número desse banco, formatado com 3 dígitos
-	 *
-	 * @return string numero formatado
-	 */
+     * Retorna o número desse banco, formatado com 3 dígitos
+     *
+     * @return string numero formatado
+     */
     public function getNumeroBancoFormatado() : string;
 
     /**
@@ -17,11 +17,11 @@ interface Banco
     public function getTemplateName() : string;
 
     /**
-	 * Linha digitável formatada
+     * Linha digitável formatada
      * @param  Boleto $boleto
-	 * @return string linha digitável
-	 */
-	public function getLinhaDigitavel(Boleto $boleto) : string;
+     * @return string linha digitável
+     */
+    public function getLinhaDigitavel(Boleto $boleto) : string;
 
     /**
      * Gera campo livre

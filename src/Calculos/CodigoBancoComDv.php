@@ -1,7 +1,7 @@
 <?php
 namespace BoletoBancario\Calculos;
 
-use  BoletoBancario\Calculos\ModuloOnze;
+use BoletoBancario\Calculos\ModuloOnze;
 
 trait CodigoBancoComDv
 {

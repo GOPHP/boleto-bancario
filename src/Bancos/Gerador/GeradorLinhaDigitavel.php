@@ -32,7 +32,8 @@ class GeradorLinhaDigitavel
     }
 
 
-    private function formata(string $linhaDigitavel) {
+    private function formata(string $linhaDigitavel)
+    {
         $linhaDigitavel = $this->insert($linhaDigitavel, '.', 5);
         $linhaDigitavel = $this->insert($linhaDigitavel, "  ", 11);
         $linhaDigitavel = $this->insert($linhaDigitavel, '.', 18);

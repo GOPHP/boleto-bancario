@@ -1,7 +1,8 @@
 <?php
 namespace BoletoBancario\Bancos;
 
-use BoletoBancario\{Boleto, Beneficiario};
+use BoletoBancario\Boleto;
+use BoletoBancario\Beneficiario;
 use BoletoBancario\Bancos\Gerador\GeradorLinhaDigitavel;
 use BoletoBancario\Bancos\CodigoDeBarraBuilder;
 use BoletoBancario\Calculos\VerificadorNossoNumero;
@@ -60,7 +61,7 @@ class CaixaSigcb extends AbstractBanco
      * @param bool $generateImage
      * @return string
      */
-    public function geraCodigoDeBarrasPara(Boleto $boleto,  bool $generateImage = false) : string
+    public function geraCodigoDeBarrasPara(Boleto $boleto, bool $generateImage = false) : string
     {
         $beneficiario = $boleto->getBeneficiario();
         $campoLivre = '';
@@ -87,9 +88,9 @@ class CaixaSigcb extends AbstractBanco
 
         $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
 
-        if ($generateImage)
+        if ($generateImage) {
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
-
+        }
         return $codigoDeBarras;
     }
 
@@ -116,9 +117,9 @@ class CaixaSigcb extends AbstractBanco
 
     public function getNumeroConvenioFormatado(Beneficiario $beneficiario) : string
     {
-        if ($this->convenioAntigo($beneficiario->getNumeroConvenio()))
+        if ($this->convenioAntigo($beneficiario->getNumeroConvenio())) {
             return str_pad($beneficiario->getNumeroConvenio(), 6, 0, STR_PAD_LEFT);
-
+        }
         return str_pad($beneficiario->getNumeroConvenio(), 7, 0, STR_PAD_LEFT);
     }
 

@@ -23,8 +23,7 @@ class Endereco
         string $cep = '',
         string $cidade = '',
         string $uf = ''
-    )
-    {
+    ) {
         $this->logradouro  = $logradouro;
         $this->bairro = $bairro;
         $this->cep = $cep;
