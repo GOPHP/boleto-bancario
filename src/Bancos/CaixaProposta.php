@@ -55,7 +55,7 @@ class CaixaProposta extends AbstractBanco
      * @param bool $generateImage
      * @return string
      */
-    public function geraCodigoDeBarrasPara(Boleto $boleto, $generateImage = false) : string
+    public function geraCodigoDeBarrasPara(Boleto $boleto, bool $generateImage = false) : string
     {
         $beneficiario = $boleto->getBeneficiario();
         $campoLivre = '';

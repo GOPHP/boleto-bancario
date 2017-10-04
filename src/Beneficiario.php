@@ -189,13 +189,16 @@ class Beneficiario
 
     public function getContaDv() : string
     {
+        if (! $this->contaDv) {
+            $this->contaDv = (new VerificadorBeneficiario)->calc($this->conta);
+        }
+
         return $this->contaDv;
     }
 
     public function comContaDv(string $contadv) : Beneficiario
     {
-        $verificador = new VerificadorBeneficiario();
-        $this->contaDv = $verificador->calc($contadv);
+        $this->contaDv = $contadv;
         return $this;
     }
 
