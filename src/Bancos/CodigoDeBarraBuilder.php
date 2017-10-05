@@ -14,19 +14,21 @@ class CodigoDeBarraBuilder
     public function __construct(Boleto $boleto)
     {
         $this->boleto = $boleto;
-        $this->codigoDeBarras = '';
     }
 
     public function comCampoLivre($campoLivre)
     {
-        $this->codigoDeBarras .= $this->boleto->getBanco()->getNumeroBancoFormatado();
-        $this->codigoDeBarras .= $this->boleto->getBanco()->getNumMoeda();
-        
-        $this->codigoDeBarras .= $this->boleto->getDatas()->getFatorVencimento();
-        $this->codigoDeBarras .= $this->boleto->getValorFormatado();
-        $this->codigoDeBarras .= $campoLivre;
-        $this->digitoBoleto = (new ModuloOnze())->calc($this->codigoDeBarras);
-        $this->codigoDeBarras = $this->insert($this->codigoDeBarras, $this->digitoBoleto, 4);
+        if (! isset($this->codigoDeBarras)) {
+            $this->codigoDeBarras .= $this->boleto->getBanco()->getNumeroBancoFormatado();
+            $this->codigoDeBarras .= $this->boleto->getBanco()->getNumMoeda();
+            
+            $this->codigoDeBarras .= $this->boleto->getDatas()->getFatorVencimento();
+            $this->codigoDeBarras .= $this->boleto->getValorFormatado();
+
+            $this->codigoDeBarras .= $campoLivre;
+            $this->digitoBoleto = (new ModuloOnze())->calc($this->codigoDeBarras);
+            $this->codigoDeBarras = $this->insert($this->codigoDeBarras, $this->digitoBoleto, 4);
+        }
 
         $this->validaTamahoDoCodigoDeBarrasCompletoGerado();
         return $this->codigoDeBarras;

@@ -474,7 +474,7 @@
     </table>
     <table class="w667">
         <tr class="ct h13">
-            <td class="w250 Ar" style="border-left:0 none;height:65px !important">Autenticação mecânica - <b class="cpN">Recibo do Contribuinte</b></td>
+            <td class="w250 Ar" style="border-left:0 none;height:65px !important">Autenticação mecânica - <b class="cpN">Via do Contribuinte</b></td>
         </tr>
     </table>
     <table class="ctN w667">
@@ -565,10 +565,16 @@
     </table>
     <table class="w667">
         <tr class="ct h13">
-            <td class="w250 Ar" style="border-left:0 none">Autenticação mecânica - <b class="cpN">Recibo do Banco</b></td>
+            <td class="w250 Ar" style="border-left:0 none">Autenticação mecânica - <b class="cpN">Via do Banco</b></td>
         </tr>
     </table>
     <table class="w667">
+        <tr>
+            <td class="cp Al pL10" style="padding-left:30px;height:20px;font-size:11px">
+                <span>
+                <?= $linha_boleto[0]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $linha_boleto[1]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $linha_boleto[2]; ?>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<?= $linha_boleto[3]; ?></span>
+            </td>
+        </tr>
         <tr>
             <td class="EcdBar Al pL10">
                 <?= $codigo_barras; ?>

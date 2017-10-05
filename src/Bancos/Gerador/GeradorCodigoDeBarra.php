@@ -28,7 +28,7 @@ class GeradorCodigoDeBarra
                 }
             }
 
-            return $this->pintarBarras($cbinicio.$cbresult.$cbfinal, 50, 1);
+            return $this->pintarBarras($cbinicio.$cbresult.$cbfinal, 55, 1.0);
         }
 
         return $this->pintarBarras('');
@@ -41,8 +41,8 @@ class GeradorCodigoDeBarra
             $espmin = 0;
         }
 
-        if ($altura < 5) {
-            $altura = 5;
+        if ($altura < 8) {
+            $altura = 8;
         }
         $largura = (strlen($mapaI25)/5*((($espmin+1)*3)+(($espmin+3)*2)))+20;
         $im = imagecreate($largura, $altura);
@@ -70,6 +70,6 @@ class GeradorCodigoDeBarra
         ob_end_clean();
 
         $base64 = 'data:image/' . 'png' . ';base64,' . base64_encode($image_data);
-        return "<img src='".$base64."' alt='Código de barras' />";
+        return "<img style='margin-left: -10px;' src='".$base64."' alt='Código de barras' />";
     }
 }
