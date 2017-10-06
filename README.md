@@ -10,6 +10,13 @@ permitindo colaboração de qualquer passoa que se disponha a discutir e realiza
 
 # Gerando Boletos
 * TO DO
+- Bradesco (@brenodouglas)
+- Hsbc
+- Sicoob (@brenodouglas)
+- Itau
+- Safra
+- Santander
+- CNAB 240 - Caixa (@brenodouglas)
 
 ## Termos Relevantes
 
