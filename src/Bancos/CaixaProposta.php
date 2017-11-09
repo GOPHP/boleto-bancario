@@ -17,6 +17,7 @@ class CaixaProposta extends AbstractBanco
         $this->codigobanco = "104";
         $this->nummoeda = "9";
         $this->codigoBancoComDv = "104-0";
+        $this->bancoRemessaCodigo = "cnab240_SIGCB";
     }
 
     /**

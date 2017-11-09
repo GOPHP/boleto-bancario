@@ -143,7 +143,7 @@ class CaixaArrecadacao extends Boleto
     public function toArray() : array
     {
         return [
-            'valor_boleto' => $this->valor,
+            'valor_boleto' => $this->valorRaw,
             'numero_documento' => $this->numeroDocumento,
             'linha_digitavel' => $this->getLinhaDigitavel(),
             'linha_boleto'    => $this->getLinhaDigitavelComVerificadores(),

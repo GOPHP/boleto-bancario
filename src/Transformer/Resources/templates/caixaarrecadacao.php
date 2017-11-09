@@ -453,7 +453,9 @@
         </tr>
         <tr class="cp h13">
             <td class="BB BR"><?= $datas['vencimento']; ?></td>
-            <td class="BB BR">&nbsp;</td>
+            <td class="BB BR">
+            <?= $valor_boleto > 0 ? $valor_boleto : '' ?>
+            </td>
         </tr>
     </table>
     <table class="w667">
@@ -539,7 +541,7 @@
         </tr>
         <tr class="cp h13">
             <td class="BB BR"><?= $datas['vencimento']; ?></td>
-            <td class="BB BR" />
+            <td class="BB BR"><?= $valor_boleto > 0 ? $valor_boleto : '' ?></td>
         </tr>
     </table>
     <table class="w667">

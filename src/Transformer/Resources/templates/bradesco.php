@@ -50,7 +50,7 @@
             <tbody>
                 <tr>
                     <td class="ct" width="666">
-                        <img height="1" src=<?= $this->image('6.png') ?> width=665 border=0>
+                        <img height="1" src=<?= $this->getImage('6.png') ?> width=665 border=0>
                     </td>
                 </tr>
                 <tr>
@@ -70,21 +70,21 @@
           <tr>
             <td class="cp" width="150">
               <span class="campo">
-                <img src="<?= $this->image('logo_bradesco.png') ?>" width="150" height="40" border=0>
+                <img src="<?= $this->getImage('logo_bradesco.png') ?>" width="150" height="40" border=0>
               </span>
             </td>
             <td width="3" valign="bottom">
-              <img height="22" src="<?= $this->image('3.png') ?>" width="2" border="0">
+              <img height="22" src="<?= $this->getImage('3.png') ?>" width="2" border="0">
             </td>
             <td class="cpt" width="58" valign="bottom">
               <div align="center">
                 <font class="bc">
-                  <?php echo $codigo_banco_com_dv ?>
+                  <?= $banco['codigo_banco_com_dv'] ?>
                 </font>
               </div>
             </td>
             <td width="3" valign="bottom">
-              <img height="22" src="<?= $this->image('3.png') ?>" width="2" border="0">
+              <img height="22" src="<?= $this->getImage('3.png') ?>" width="2" border="0">
             </td>
             <td class="ld" align="right" width="453" valign="bottom">
               <span class="ld">
@@ -97,7 +97,7 @@
           <tbody>
             <tr>
               <td colspan="5">
-                <img height="2" src="<?= $this->image('2.png') ?>" width="666" border="0" />
+                <img height="2" src="<?= $this->getImage('2.png') ?>" width="666" border="0" />
               </td>
             </tr>
           </tbody>
@@ -107,31 +107,31 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="298" height="13">
                 Cedente
               </td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="126" height="13">
                 Agência/Código do Cedente
               </td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0" />
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0" />
               </td>
               <td class="ct" valign="top" width="34" height="13">
                 Espécie
               </td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="13" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="ct" valign="top" width="53" height="13">
                 Quantidade
               </td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="13" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="ct" valign="top" width="120" height="13">
                 Nosso número
@@ -139,20 +139,20 @@
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="12" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="cp" valign="top" width="298" height="12">
-                <span class="""campo"><?php echo $cedente; ?></span></td>
+                <span class="""campo"><?= $beneficiario['nomeBeneficiario'] ?></span></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="12" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="cp" valign="top" width="126" height="12">
                 <span class="campo">
-                    <?php echo $agencia_codigo ?>
+                    <?= $beneficiario['agenciaCodigo'] ?>
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="12" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="cp" valign="top" width="34" height="12">
                 <span class="campo">
@@ -160,7 +160,7 @@
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src=<?= $this->image('1.png') ?> width="1" border="0">
+                <img height="12" src=<?= $this->getImage('1.png') ?> width="1" border="0">
               </td>
               <td class="cp" valign="top" width="53" height="12">
                 <span class="campo">
@@ -168,44 +168,44 @@
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="120" height="12">
                 <span class="campo">
-                    <?php echo $nosso_numero ?>
+                  <?= $nossoNumero; ?>-<?= $nossoNumero_dv; ?>
                 </span>
               </td>
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="298" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="298" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="298" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="126" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="126" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="126" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="34" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="34" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="34" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="53" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="53" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="53" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="120" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="120" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="120" border="0">
               </td>
             </tr>
           </tbody>
@@ -214,26 +214,26 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" colspan="3" height="13">Número do documento</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="132" height="13">CPF/CNPJ</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="134" height="13">Vencimento</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">Valor documento
               </td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" colspan="3" height="12">
                 <span class="campo">
@@ -241,23 +241,23 @@
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="132" height="12">
                 <span class="campo">
-                    <?php echo $cpf_cnpj ?>
+                    <?= $beneficiario['documento'] ?>
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="134" height="12">
                 <span class="campo">
-                    <?php echo $data_vencimento ?>
+                    <?= $datas['vencimento'] ?>
                 </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="180" height="12">
                 <span class="campo">
@@ -267,34 +267,34 @@
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="113" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="113" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="113" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="72" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="72" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="72" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="132" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="132" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="132" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="134" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="134" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="134" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -303,78 +303,78 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="113" height="13">(-) Desconto / Abatimentos</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="112" height="13">(-) Outras deduções</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="113" height="13">(+) Mora / Multa</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="113" height="13">(+) Outros acréscimos</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">(=) Valor cobrado</td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="113" height="12"></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="112" height="12"></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="113" height="12"></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="113" height="12"></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="180" height="12"></td>
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="113" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="113" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="113" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="112" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="112" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="112" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="113" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="113" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="113" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="113" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="113" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="113" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -383,25 +383,25 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="659" height="13">Sacado</td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="659" height="12">
                 <span class="campo">
-                            <?php echo $sacado ?>
+                            <?= $pagador['nome'] ?>
                         </span></td>
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="659" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="659" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="659" border="0">
               </td>
             </tr>
           </tbody>
@@ -419,9 +419,9 @@
               <td width="7"></td>
               <td class="cp" width="564">
                 <span class="campo">
-                            <?php echo $demonstrativo1 ?><br>
-                            <?php echo $demonstrativo2 ?><br>
-                            <?php echo $demonstrativo3 ?><br>
+                            <?= $descricoes[0] ?><br>
+                            <?= $descricoes[1] ?><br>
+                            <?= $descricoes[2] ?><br>
                         </span>
               </td>
               <td width="7"></td>
@@ -452,7 +452,7 @@
             </tr>
             <tr>
               <td class="ct" width="666">
-                <img height="1" src="<?= $this->image('6.png') ?>" width="665" border="0">
+                <img height="1" src="<?= $this->getImage('6.png') ?>" width="665" border="0">
               </td>
             </tr>
           </tbody>
@@ -461,21 +461,21 @@
           <tr>
             <td class="cp" width="150">
               <span class="campo">
-                <img src="<?= $this->image('logo_bradesco.png') ?>" width="150" height="40" border="0">
+                <img src="<?= $this->getImage('logo_bradesco.png') ?>" width="150" height="40" border="0">
               </span>
             </td>
             <td width="3" valign="bottom">
-              <img height="22" src="<?= $this->image('3.png') ?>" width="2" border="0">
+              <img height="22" src="<?= $this->getImage('3.png') ?>" width="2" border="0">
             </td>
             <td class="cpt" width="58" valign="bottom">
               <div align="center">
                 <font class="bc">
-                  <?php echo $codigo_banco_com_dv ?>
+                  <?= $banco['codigo_banco_com_dv'] ?>
                 </font>
               </div>
             </td>
             <td width="3" valign="bottom">
-              <img height="22" src="<?= $this->image('3.png') ?>" width="2" border="0">
+              <img height="22" src="<?= $this->getImage('3.png') ?>" width="2" border="0">
             </td>
             <td class="ld" align="right" width="453" valign="bottom"><span class="ld">
                         <span class="campotitulo">
@@ -486,7 +486,7 @@
           <tbody>
             <tr>
               <td colspan="5">
-                <img height="2" src="<?= $this->image('2.png') ?>" width="666" border="0">
+                <img height="2" src="<?= $this->getImage('2.png') ?>" width="666" border="0">
               </td>
             </tr>
           </tbody>
@@ -495,39 +495,39 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="472" height="13">Local de pagamento</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">Vencimento</td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="472" height="12">Pagável em qualquer Banco até o vencimento</td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="180" height="12">
                 <span class="campo">
-                            <?php echo $data_vencimento ?>
+                            <?= $datas['vencimento'] ?>
                         </span></td>
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="472" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="472" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="472" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -536,25 +536,25 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="472" height="13">Cedente</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">Agência/Código cedente
               </td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="472" height="12">
                 <span class="campo">
                             <?php echo $cedente ?>
                         </span></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="180" height="12">
                 <span class="campo">
@@ -563,16 +563,16 @@
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="472" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="472" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="472" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -581,27 +581,27 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="113" height="13">Data do documento</td>
-              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="153" height="13">N<u>o</u> documento
               </td>
-              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="62" height="13">Espécie doc.
               </td>
-              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="34" height="13">Aceite</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="82" height="13">Data processamento
               </td>
-              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="ct" valign="top" width="7" height="13"> <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="180" height="13">Nosso número
               </td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="113" height="12">
                 <div align="left">
@@ -610,14 +610,14 @@
                             </span></div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="153" height="12">
                 <span class="campo">
                             <?php echo $numero_documento ?>
                         </span></td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="62" height="12">
                 <div align="left"><span class="campo">
@@ -626,7 +626,7 @@
                 </div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="34" height="12">
                 <div align="left"><span class="campo">
@@ -635,7 +635,7 @@
                 </div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="82" height="12">
                 <div align="left">
@@ -644,7 +644,7 @@
                             </span></div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" align="right" width="180" height="12">
                 <span class="campo">
@@ -653,35 +653,35 @@
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="113" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="113" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="113" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="153" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="153" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="153" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="62" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="62" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="62" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="34" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="34" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="34" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="82" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="82" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="82" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0"></td>
             </tr>
           </tbody>
         </table>
@@ -689,36 +689,36 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" COLSPAN="3" height="13">Uso do banco</td>
-              <td class="ct" valign="top" height="13" width="7"> <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="ct" valign="top" height="13" width="7"> <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="83" height="13">Carteira</td>
               <td class="ct" valign="top" height="13" width="7">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="53" height="13">Espécie</td>
               <td class="ct" valign="top" height="13" width="7">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="123" height="13">Quantidade</td>
               <td class="ct" valign="top" height="13" width="7">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="ct" valign="top" width="72" height="13">
                 Valor Documento</td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">(=")" Valor documento</td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td valign="top" class="cp" height="12" COLSPAN="3">
                 <div align="left">
                 </div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="83">
                 <div align="left"> <span class="campo">
@@ -726,7 +726,7 @@
                             </span></div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="53">
                 <div align="left"><span class="campo">
@@ -735,60 +735,60 @@
                 </div>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="123"><span class="campo">
                             <?php echo $quantidade ?>
                         </span>
               </td>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="72">
                 <span class="campo">
                             <?php echo $valor_unitario ?>
                         </span></td>
-              <td class="cp" valign="top" width="7" height="12"> <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+              <td class="cp" valign="top" width="7" height="12"> <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
               <td class="cp" valign="top" align="right" width="180" height="12">
                 <span class="campo">
                             <?php echo $valor_boleto ?>
                         </span></td>
             </tr>
             <tr>
-              <td valign="top" width="7" height="1"> <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+              <td valign="top" width="7" height="1"> <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="75" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="75" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="31" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="31" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="31" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="83" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="83" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="83" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="53" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="53" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="53" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="123" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="123" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="123" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="72" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="72" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="72" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -801,17 +801,17 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="1" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -829,22 +829,22 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="ct" valign="top" width="180" height="13">(-) Desconto / Abatimentos</td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="cp" valign="top" align="right" width="180" height="12"></td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
                       </td>
                       <td valign="top" width="180" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -857,17 +857,17 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="1" border="0"></td>
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="1" border="0"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -877,20 +877,20 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="ct" valign="top" width="180" height="13">(-) Outras deduções</td>
                     </tr>
                     <tr>
-                      <td class="cp" valign="top" width="7" height="12"> <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                      <td class="cp" valign="top" width="7" height="12"> <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
                       <td class="cp" valign="top" align="right" width="180" height="12"></td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
                       </td>
                       <td valign="top" width="180" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -903,16 +903,16 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0"></td>
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0"></td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="1" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -923,20 +923,20 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="ct" valign="top" width="180" height="13">(+) Mora / Multa</td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="cp" valign="top" align="right" width="180" height="12"></td>
                     </tr>
                     <tr>
-                      <td valign="top" width="7" height="1"> <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0"></td>
+                      <td valign="top" width="7" height="1"> <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0"></td>
                       <td valign="top" width="180" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0"></td>
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0"></td>
                     </tr>
                   </tbody>
                 </table>
@@ -948,17 +948,17 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="1" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -969,22 +969,22 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="ct" valign="top" width="180" height="13">(+) Outros acréscimos</td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="cp" valign="top" align="right" width="180" height="12"></td>
                     </tr>
                     <tr>
                       <td valign="top" width="7" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
                       </td>
                       <td valign="top" width="180" height="1">
-                        <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                        <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -997,12 +997,12 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                     </tr>
                   </tbody>
@@ -1013,13 +1013,13 @@
                   <tbody>
                     <tr>
                       <td class="ct" valign="top" width="7" height="13">
-                        <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="ct" valign="top" width="180" height="13">(=) Valor cobrado</td>
                     </tr>
                     <tr>
                       <td class="cp" valign="top" width="7" height="12">
-                        <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                        <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
                       </td>
                       <td class="cp" valign="top" align="right" width="180" height="12"></td>
                     </tr>
@@ -1033,7 +1033,7 @@
           <tbody>
             <tr>
               <td valign="top" width="666" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="666" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="666" border="0">
               </td>
             </tr>
           </tbody>
@@ -1042,13 +1042,13 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="659" height="13">Sacado</td>
             </tr>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="659" height="12"><span class="campo">
                             <?php echo $sacado ?>
@@ -1061,7 +1061,7 @@
           <tbody>
             <tr>
               <td class="cp" valign="top" width="7" height="12">
-                <img height="12" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="12" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="659" height="12"><span class="campo">
                             <?php echo $endereco1 ?>
@@ -1074,30 +1074,30 @@
           <tbody>
             <tr>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="cp" valign="top" width="472" height="13">
                 <span class="campo">
                             <?php echo $endereco2 ?>
                         </span></td>
               <td class="ct" valign="top" width="7" height="13">
-                <img height="13" src="<?= $this->image('1.png') ?>" width="1" border="0">
+                <img height="13" src="<?= $this->getImage('1.png') ?>" width="1" border="0">
               </td>
               <td class="ct" valign="top" width="180" height="13">Cód. baixa
               </td>
             </tr>
             <tr>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="472" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="472" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="472" border="0">
               </td>
               <td valign="top" width="7" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="7" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="7" border="0">
               </td>
               <td valign="top" width="180" height="1">
-                <img height="1" src="<?= $this->image('2.png') ?>" width="180" border="0">
+                <img height="1" src="<?= $this->getImage('2.png') ?>" width="180" border="0">
               </td>
             </tr>
           </tbody>
@@ -1137,7 +1137,7 @@
             </tr>
             <tr>
               <td class="ct" width="666">
-                <img height="1" src="<?= $this->image('6.png') ?>" width="665" border="0">
+                <img height="1" src="<?= $this->getImage('6.png') ?>" width="665" border="0">
               </td>
             </tr>
           </tbody>

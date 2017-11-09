@@ -4,10 +4,14 @@ namespace BoletoBancario;
 use BoletoBancario\Exception\UnsupportedOperationException;
 use BoletoBancario\Exception\IllegalArgumentException;
 use BoletoBancario\Calculos\FormataNumero;
+use BoletoBancario\MultaDesconto;
+
+use \CnabPHP\Remessa;
 
 class Boleto
 {
     protected $valor = 0.0;
+    protected $valorRaw;
     protected $valorBoleto;
     protected $quantidadeMoeda;
     protected $valorMoeda;
@@ -28,7 +32,7 @@ class Boleto
     protected $instrucoes;
     protected $descricoes;
     protected $locaisDePagamento;
-
+    protected $multaDesconto;
 
     /**
      * @return Boleto novo Boleto com valores default de especieMoeda R$,
@@ -38,7 +42,8 @@ class Boleto
     {
         return (new static())->comEspecieMoeda("R$")
             ->comCodigoEspecieMoeda(9)
-            ->comAceite(false)->comEspecieDocumento("DV");
+            ->comAceite(false)
+            ->comEspecieDocumento("DV");
     }
 
     /**
@@ -48,7 +53,7 @@ class Boleto
     {
         return $this->aceite;
     }
-
+    
     /**
      * @param bool $aceite que será associado ao boleto
      * @return Boleto este boleto
@@ -158,7 +163,8 @@ class Boleto
 
     public function comValorBoleto(float $valor) : Boleto
     {
-        $this->valor = number_format($valor, 2, ',', '');
+        $this->valorRaw = number_format($valor, 2, ',', '');
+        $this->valor = $valor;
         $this->valorBoleto = (new FormataNumero)->calc(
             number_format($valor, 2, ',', ''),
             10,
@@ -500,11 +506,75 @@ class Boleto
         return $this->locaisDePagamento ? "" : $this->locaisDePagamento[0];
     }
 
+    public function comMultaDesconto(MultaDesconto $multaDesconto)
+    {
+        $this->multaDesconto = $multaDesconto;
+    }
+
+    public function getMultaDesconto() : MultaDesconto
+    {
+        if (! $this->multaDesconto)
+            $this->multaDesconto = new MultaDesconto();
+
+        return $this->multaDesconto;
+    }
+
+    public function saveRemessa240($path, $sequencial = 1)
+    {
+        $codigoBanco = $this->banco->getNumeroBancoFormatado();
+        $arquivo = new Remessa(104, $this->banco->getBancoRemessaCodigo(), [
+            'nome_empresa' => $this->beneficiario->getNomeBeneficiario(),
+            'tipo_inscricao'  => $this->beneficiario->getTipo(), // 1 para cpf, 2 cnpj
+            'numero_inscricao' => $this->beneficiario->getDocumento(),
+            'agencia'       => $this->beneficiario->getAgenciaFormatada(),
+            'agencia_dv'    => $this->beneficiario->getDigitoAgencia(),
+            'conta'         => $this->beneficiario->getConta(), // número da conta
+            'conta_dv'     => $this->beneficiario->getContaDv(), // digito da conta,
+            'codigo_beneficiario' => $this->beneficiario->getCodigoBeneficiario(),
+            'numero_sequencial_arquivo' => $sequencial
+        ]);
+            
+        $lote  = $arquivo->addLote(['tipo_servico'=> 1]);
+        $lote->inserirDetalhe([
+            'codigo_movimento' => 1, //1 = Entrada de título, para outras opçoes ver nota explicativa C004 manual Cnab_SIGCB na pasta docs
+            'nosso_numero'      => $sequencial,
+            'especie_titulo'    => "DM", // informar dm e sera convertido para codigo em qualquer laytou conferir em especie.php
+            'valor'             => $this->valor,
+            'emissao_boleto'    => 2,
+            'protestar'         => 3, // 1 = Protestar com (Prazo) dias, 3 = Devolver após (Prazo) dias
+            'prazo_protesto'    => 0, // Informar o numero de dias apos o vencimento para iniciar o protesto
+            'nome_pagador'      => $this->pagador->getNome(), // O Pagador é o cliente, preste atenção nos campos abaixo
+            'tipo_inscricao'    => 1, //campo fixo, escreva '1' se for pessoa fisica, 2 se for pessoa juridica
+            'numero_inscricao'  => $this->pagador->getDocumento(),//cpf ou ncpj do pagador
+            'endereco_pagador'  => $this->pagador->getEndereco()->getLogradouro(),
+            'bairro_pagador'    => $this->pagador->getEndereco()->getBairro(),
+            'cep_pagador'       => $this->pagador->getEndereco()->getCep(), // com hífem
+            'cidade_pagador'    => $this->pagador->getEndereco()->getCidade(),
+            'uf_pagador'        => $this->pagador->getEndereco()->getUf(),
+            'data_vencimento'   => $this->datas->getVencimento()->format('Y-m-d'), // informar a data neste formato
+            'data_emissao'      => $this->datas->getProcessamento()->format('Y-m-d'), // informar a data neste formato
+            'vlr_juros'         => (string) $this->getMultaDesconto()->getValorJuros(), // Valor do juros de 1 dia'
+            'data_desconto'     => $this->getMultaDesconto()->getDataDesconto(), // informar a data neste formato
+            'vlr_desconto'      => (string) $this->getMultaDesconto()->getValorDesconto(), // Valor do desconto
+            'baixar'            => 1, // codigo para indicar o tipo de baixa '1' (Baixar/ Devolver) ou '2' (Não Baixar / Não Devolver)
+            'prazo_baixa'       => $this->getMultaDesconto()->getDiasParaBaixa(), // prazo de dias para o cliente pagar após o vencimento
+            'mensagem'          => '',
+            'email_pagador'     => ' ',
+            'data_multa'        => $this->getMultaDesconto()->getDataMulta(), // informar a data neste formato, // data da multa
+            'vlr_multa'         => (string) $this->getMultaDesconto()->getValorMulta() // valor da multa
+        ]);
+        
+        $text = $arquivo->getText();
+        file_put_contents($path, $text);
+
+        return $text;
+    }
+
     public function toArray() : array
     {
         return [
             'aceite' => $this->aceite,
-            'valor_boleto' => $this->valor,
+            'valor_boleto' => $this->valorRaw,
             'valor_unitario' => 0,
             'especie' => "R$",
             'especie_doc' => $this->especiDocumento,

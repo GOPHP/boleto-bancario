@@ -72,7 +72,7 @@ class Endereco
      */
     public function getCep() : string
     {
-        return $this->bairro;
+        return $this->cep;
     }
 
     /**

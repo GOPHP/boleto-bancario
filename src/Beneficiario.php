@@ -8,10 +8,13 @@ use BoletoBancario\Calculos\VerificadorBeneficiario;
 
 class Beneficiario
 {
+    const FISICA = 1;
+    const JURIDICA = 2;
 
     private $agencia;
     private $digitoAgencia;
 
+    private $tipo;
     private $codigoBeneficiario;
     private $digitoCodigoBeneficiario;
 
@@ -29,14 +32,20 @@ class Beneficiario
 
     private $numeroConvenio;
 
+    public function getTipo() : int
+    {
+        return $this->tipo;
+    }
+
+    public function comTipo($tipo) : Beneficiario
+    {
+        $this->tipo = $tipo;
+        return $this;
+    }
+
     public function getAgenciaFormatada() : string
     {
         return str_pad($this->agencia, 4, STR_PAD_LEFT);
-    }
-
-    public function setAgencia() : string
-    {
-        return $agencia;
     }
 
     public function comAgencia(string $agencia) : Beneficiario
@@ -58,7 +67,7 @@ class Beneficiario
 
     public function getCodigoBeneficiario() : string
     {
-        return $this->digitoAgencia;
+        return $this->codigoBeneficiario;
     }
 
     public function comCodigoBeneficiario(string $codigoBenficiario) : Beneficiario
@@ -69,6 +78,10 @@ class Beneficiario
 
     public function getDigitoCodigoBeneficiario() : string
     {
+        if (! $this->digitoCodigoBeneficiario) {
+            $this->digitoCodigoBeneficiario = (new VerificadorBeneficiario)->calc($this->codigoBeneficiario);
+        }
+
         return $this->digitoCodigoBeneficiario;
     }
 
@@ -219,7 +232,7 @@ class Beneficiario
             'digitoAgencia' => $this->digitoAgencia,
             'agenciaCodigo' => $this->getAgenciaCodigo(),
             'codigoBeneficiario' => $this->codigoBeneficiario,
-            'digitoCodigoBeneficiario' => $this->digitoCodigoBeneficiario,
+            'digitoCodigoBeneficiario' => $this->getDigitoCodigoBeneficiario(),
             'carteira' => $this->carteira,
             'nossoNumeroConst' => $this->nossoNumeroConst,
             'nomeBeneficiario' => $this->nomeBeneficiario,

@@ -23,7 +23,7 @@ $beneficiario = (new Beneficiario)->comNomeBeneficiario("Fulano de Tal")
                                   ->comNumeroConvenio("1207113")
                                   ->comCarteira("RG")
                                   ->comEndereco($enderecoBeneficiario)
-                                  ->comNossoNumero("900020");
+                                  ->comNossoNumero('14000000000'.rand(900020, 999999));
 
 $enderecoPagador = (new Endereco)->comLogradouro("Av. dos testes, 111 apto 333")
                                  ->comBairro("Bairro Teste")
@@ -36,11 +36,6 @@ $pagador = (new Pagador)->comNome("Fulano da Silva")
                         ->comEndereco($enderecoPagador);
 
 $banco = new Bradesco();
-$banco->comNossoNumero1('000')
-      ->comNossoNumero2('000')
-      ->comNossoNumero3('000000019')
-      ->comNossoNumeroConst1('1')
-      ->comNossoNumeroConst2('4');
 
 $boleto = (Boleto::novoBoleto())->comBanco($banco)
                         ->comDatas($datas)
