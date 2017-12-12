@@ -69,7 +69,7 @@ class CaixaSigcb extends AbstractBanco
         $carteira = $boleto->getCarteira();
 
         $nossoNumeroCompleto = $this->getNossoNumeroFormatado($beneficiario);
-        $campoLivre .= $beneficiario->getConta().$beneficiario->getContaDv();
+        $campoLivre .= $beneficiario->getCodigoBeneficiario().$beneficiario->getDigitoCodigoBeneficiario();
 
         $campoLivre .= str_pad(substr($nossoNumeroCompleto, 2, 3), 3, 0, STR_PAD_LEFT);
         $campoLivre .= str_pad(substr($nossoNumeroCompleto, 0, 1), 1, 0, STR_PAD_LEFT);
@@ -88,10 +88,11 @@ class CaixaSigcb extends AbstractBanco
         $this->codigoDeBarrasBuilder = new CodigoDeBarraBuilder($boleto);
 
         $codigoDeBarras = $this->codigoDeBarrasBuilder->comCampoLivre($campoLivre);
-
+        
         if ($generateImage) {
             return $this->geraImagemCodigoDeBarras($codigoDeBarras);
         }
+        
         return $codigoDeBarras;
     }
 

@@ -63,8 +63,8 @@ class CaixaProposta extends AbstractBanco
         $carteira = $boleto->getCarteira();
 
         $nossoNumeroCompleto = $this->getNossoNumeroFormatado($beneficiario);
-        $campoLivre .= $beneficiario->getConta().$beneficiario->getContaDv();
-
+        $campoLivre .= $beneficiario->getCodigoBeneficiario().$beneficiario->getDigitoCodigoBeneficiario();
+        
         $campoLivre .= str_pad(substr($nossoNumeroCompleto, 2, 3), 3, 0, STR_PAD_LEFT);
         $campoLivre .= str_pad(substr($nossoNumeroCompleto, 0, 1), 1, 0, STR_PAD_LEFT);
         $campoLivre .= str_pad(substr($nossoNumeroCompleto, 5, 3), 3, 0, STR_PAD_LEFT);

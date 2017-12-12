@@ -573,7 +573,7 @@
                         Agência / Código do Beneficiário
                     </td>
                     <td class=ct valign=top width=8 height=13> <img height=13 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
-                    <td class=ct valign=top width=182 height=13>
+                    <td class=ct valign=top width=178 height=13>
                         Data de Vencimento
                     </td>
                 </tr>
@@ -609,32 +609,41 @@
                         </div>
                     </td>
                     <td class=cp valign=top width=0 height=12><img height=12 src="<?= $this->getImage('1.png'); ?>" width=1 border=0></td>
-                    <td class=cp valign=top align=right width=182 height=12>
+                    <td class=cp valign=top align=right width=178 height=12>
                         <span class="campo">
                             <?= $datas['vencimento']; ?>
                         </span>
                     </td>
                 </tr>
                 <tr>
-                    <td valign=top width=7 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0></td>
-                    <td valign=top width=103 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=103 border=0></td>
-                    <td valign=top width=7 height=1>
-                        <img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0>
+                    <td valign=top width=7 height=1 style="border-bottom: 1px solid #000;">
+                    
                     </td>
-                    <td valign=top width=103 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=103 border=0></td>
-                    <td valign=top width=7 height=1>
-                        <img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0>
+                    <td valign=top width=103 height=1 style="border-bottom: 1px solid #000;">
+                    
                     </td>
-                    <td valign=top width=113 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=113 border=0></td>
-                    <td valign=top width=7 height=1>
-                        <img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0>
+                    <td valign=top width=7 height=1 style="border-bottom: 1px solid #000;">
+                        
                     </td>
-                    <td valign=top width=130 height=1><img height=1 src="<?= $this->getImage('2.png'); ?>" width=132 border=0></td>
-                    <td valign=top width=8 height=1>
-                        <img height=1 src="<?= $this->getImage('2.png'); ?>" width=7 border=0>
+                    <td valign=top width=103 height=1 style="border-bottom: 1px solid #000;">
+                    
                     </td>
-                    <td valign=top width=182 height=1>
-                        <img height=1 src="<?= $this->getImage('2.png'); ?>" width=182 border=0>
+                    <td valign=top width=7 height=1 style="border-bottom: 1px solid #000;">
+                        
+                    </td>
+                    <td valign=top width=113 height=1 style="border-bottom: 1px solid #000;">
+                    
+                    </td>
+                    <td valign=top width=7 height=1 style="border-bottom: 1px solid #000;">
+                        
+                    </td>
+                    <td valign=top width=130 height=1 style="border-bottom: 1px solid #000;">
+                    
+                    </td>
+                    <td valign=top width=0 height=1 style="border-bottom: 1px solid #000;">
+                        
+                    </td>
+                    <td valign=top width=178 height=1 style="border-bottom: 1px solid #000;">
                     </td>
                 </tr>
             </tbody>

@@ -41,8 +41,8 @@ class GeradorCodigoDeBarra
             $espmin = 0;
         }
 
-        if ($altura < 8) {
-            $altura = 8;
+        if ($altura < 6) {
+            $altura = 6;
         }
         $largura = (strlen($mapaI25)/5*((($espmin+1)*3)+(($espmin+3)*2)))+20;
         $im = imagecreate($largura, $altura);

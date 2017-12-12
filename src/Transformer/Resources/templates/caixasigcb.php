@@ -399,7 +399,8 @@
                     <td class="cp" valign="top" width="7" height="16"><img height="16" src="<?= $this->getImage('1.png'); ?>" width="1" border="0"></td>
                     <td class="cp" valign="top" width="140" height="16">
                         <span class="campo">
-                            240000000000000195  </span>
+                        
+                        </span>
                     </td>
                 </tr>
                 <tr>
