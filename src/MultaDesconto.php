@@ -14,8 +14,8 @@ class MultaDesconto
     {
         $this->valorMulta = 0.00;
         $this->valorDesconto = 0.00;
-        $this->dataDesconto = (new \DateTime())->format('Y-m-d');
-        $this->dataMulta = (new \DateTime())->format('Y-m-d');
+        $this->dataDesconto = "0";
+        $this->dataMulta = "0";
         $this->diasParaBaixa = 0;
         $this->valorJuros = 0.00;
     }

@@ -90,7 +90,7 @@ class Endereco
      */
     public function getCidade() : string
     {
-        return $this->bairro;
+        return $this->cidade;
     }
 
     /**
@@ -108,7 +108,7 @@ class Endereco
      */
     public function getUf() : string
     {
-        return $this->bairro;
+        return $this->uf;
     }
 
     /**
