@@ -543,14 +543,14 @@ class Boleto
             'emissao_boleto'    => 2,
             'protestar'         => 3, // 1 = Protestar com (Prazo) dias, 3 = Devolver após (Prazo) dias
             'prazo_protesto'    => 0, // Informar o numero de dias apos o vencimento para iniciar o protesto
-            'nome_pagador'      => $this->pagador->getNome(), // O Pagador é o cliente, preste atenção nos campos abaixo
+            'nome_pagador'      => utf8_decode($this->pagador->getNome()), // O Pagador é o cliente, preste atenção nos campos abaixo
             'tipo_inscricao'    => 1, //campo fixo, escreva '1' se for pessoa fisica, 2 se for pessoa juridica
             'numero_inscricao'  => $this->pagador->getDocumento(),//cpf ou ncpj do pagador
-            'endereco_pagador'  => $this->pagador->getEndereco()->getLogradouro(),
-            'bairro_pagador'    => $this->pagador->getEndereco()->getBairro(),
-            'cep_pagador'       => $this->pagador->getEndereco()->getCep(), // com hífem
-            'cidade_pagador'    => $this->pagador->getEndereco()->getCidade(),
-            'uf_pagador'        => $this->pagador->getEndereco()->getUf(),
+            'endereco_pagador'  => utf8_decode($this->pagador->getEndereco()->getLogradouro()),
+            'bairro_pagador'    => utf8_decode($this->pagador->getEndereco()->getBairro()),
+            'cep_pagador'       => utf8_decode($this->pagador->getEndereco()->getCep()), // com hífem
+            'cidade_pagador'    => utf8_decode($this->pagador->getEndereco()->getCidade()),
+            'uf_pagador'        => utf8_decode($this->pagador->getEndereco()->getUf()),
             'data_vencimento'   => $this->datas->getVencimento()->format('Y-m-d'), // informar a data neste formato
             'data_emissao'      => $this->datas->getProcessamento()->format('Y-m-d'), // informar a data neste formato
             'vlr_juros'         => (string) $this->getMultaDesconto()->getValorJuros(), // Valor do juros de 1 dia'
